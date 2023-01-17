@@ -5,6 +5,10 @@ const simulatorSchema = mongoose.Schema({
     muscles: String,
     title: String,
     subtitle: String,
+    category: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Category",
+      },
 })
 const Simulator = mongoose.model('Simulator', simulatorSchema)
 
