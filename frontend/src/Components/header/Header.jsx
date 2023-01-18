@@ -1,14 +1,44 @@
 import React, { useState } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { GiHamburgerMenu } from "react-icons/gi";
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 import styles from "./Header.module.scss";
 import logo from "../../images/logo.png";
 
 const Header = () => {
   const [show, setShow] = useState(false);
-
+  const [modalShow, setModalShow] = React.useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  function MyVerticallyCenteredModal(props) {
+    return (
+      <Modal
+        {...props}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+        backdrop="static"
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+            Логин/Регистрация
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <form action="#">
+            <input type="text" />
+            <br />
+            <input type="text" />
+          </form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button onClick={props.onHide}>Close</Button>
+        </Modal.Footer>
+      </Modal>
+    );
+  }
 
   return (
     <header>
@@ -20,7 +50,7 @@ const Header = () => {
         <div> Тренажёры </div>
         <div> Тренеры </div>
         <div> Массаж </div>
-        <div> Магазин </div>
+        <div> Спортбар </div>
       </div>
 
       <div className={styles.burger} onClick={handleShow}>
@@ -40,8 +70,16 @@ const Header = () => {
           </Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body className={styles.offcanvas_body}>
-          Some text as placeholder. In real life you can have the elements you
-          have chosen. Like, text, images, lists, etc.
+
+        <Button variant="primary" onClick={() => setModalShow(true)}>
+        Авторизация
+      </Button>
+
+      <MyVerticallyCenteredModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
+
         </Offcanvas.Body>
       </Offcanvas>
     </header>
