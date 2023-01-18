@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const goodsSchema = mongoose.Schema({
+    brand: String,
     name: String,
     image: String,
     price: String,
