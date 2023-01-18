@@ -12,6 +12,16 @@ const Coach = () => {
   const loading = useSelector((state) => state.coach.loading);
 
   const [modalActive, setModalActive] = useState(false);
+  const [text, setText] = useState("");
+
+  const handleInput = (e) => {
+    setText(e.target.value);
+  };
+
+  const filtered = coaches.filter((coach) => {
+    return coach.name.toLowerCase().includes(text.toLowerCase());
+  })
+  console.log(filtered);
 
   useEffect(() => {
     dispatch(fetchCoaches());
@@ -26,29 +36,46 @@ const Coach = () => {
   }
 
   return (
-    <div className={styles.mainBlock}>
-      {coaches.map((coach) => {
-        return (
-          <>
-            <div className={styles.mapBlock}>
-              <div className={styles.imgBlock}>
-                <img
-                  className={styles.imgCoach}
-                  src={`http://localhost:4000/assets/images/coaches/${coach.image}`}
-                  alt="Фотографии тренеров"
-                />
+    <>
+      <div>
+        <input className={styles.poisk} onChange={handleInput} placeholder='Поиск тренера...'/>
+      </div>
+      <div className={styles.mainBlock}>
+        {filtered.map((coach) => {
+          return (
+            <>
+              <div className={styles.mapBlock} >
+                <div className={styles.imgBlock}>
+                  <img
+                    className={styles.imgCoach}
+                    src={`http://localhost:4000/assets/images/coaches/${coach.image}`}
+                    alt="Фотографии тренеров"
+                  />
+                </div>
+                <div className={styles.name}>{coach.name}</div>
+                <div className={styles.description}>{coach.description}</div>
+                <button
+                  className={styles.btn}
+                  onClick={() => setModalActive(true)}
+                >
+                  Записаться
+                </button>
               </div>
-              <div className={styles.name}>{coach.name}</div>
-              <div className={styles.description}>{coach.description}</div>
-              <button className={styles.btn} onClick = {() => setModalActive(true)}>Записаться</button>
-            </div>
-          </>
-        );
-      })}
-      <Modal active={modalActive} setActive={setModalActive}>
-        <p className={styles.pa}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias ex temporibus officia velit quo impedit expedita accusantium et earum sed nesciunt aperiam, quaerat laudantium recusandae, quia quisquam, illum tenetur at.</p>
-      </Modal>
-    </div>
+            </>
+          );
+        })}
+        <Modal active={modalActive} setActive={setModalActive}>
+          <div>
+            <button onClick={() => setModalActive(false)}>X</button>
+          </div>
+          <div className={styles.info}>
+            <input className={styles.inp} placeholder="Введите свою фамилию" />
+            <input className={styles.inp} placeholder="Введите свое имя" />
+            <input className={styles.inp} placeholder="Введите свое отчество" />
+          </div>
+        </Modal>
+      </div>
+    </>
   );
 };
 
