@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { GiHamburgerMenu } from "react-icons/gi";
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 import styles from "./Header.module.scss";
 import logo from "../../images/logo.png";
+import SignIn from "../SignIn/SignIn";
+import SignUp from "../SignUp/SignUp";
 
 const Header = () => {
   const [show, setShow] = useState(false);
@@ -28,14 +30,11 @@ const Header = () => {
         </Modal.Header>
         <Modal.Body>
           <form action="#">
-            <input type="text" />
-            <br />
-            <input type="text" />
+            <SignIn />
+            <SignUp />
           </form>
         </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={props.onHide}>Close</Button>
-        </Modal.Footer>
+        <Modal.Footer></Modal.Footer>
       </Modal>
     );
   }
@@ -70,16 +69,14 @@ const Header = () => {
           </Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body className={styles.offcanvas_body}>
+          <Button variant="primary" onClick={() => setModalShow(true)}>
+            Авторизация
+          </Button>
 
-        <Button variant="primary" onClick={() => setModalShow(true)}>
-        Авторизация
-      </Button>
-
-      <MyVerticallyCenteredModal
-        show={modalShow}
-        onHide={() => setModalShow(false)}
-      />
-
+          <MyVerticallyCenteredModal
+            show={modalShow}
+            onHide={() => setModalShow(false)}
+          />
         </Offcanvas.Body>
       </Offcanvas>
     </header>
