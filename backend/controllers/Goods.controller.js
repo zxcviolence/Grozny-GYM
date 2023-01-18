@@ -15,6 +15,7 @@ module.exports.GoodsController = {
     try {
       const goods = await Goods.create({
         name: req.body.name,
+        brand: req.body.brand,
         image: req.body.image,
         price: req.body.price,
         subtitle: req.body.subtitle,
