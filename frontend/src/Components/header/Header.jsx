@@ -28,20 +28,20 @@ const Header = () => {
       </div>
 
       <Offcanvas
-        bsPrefix={styles.offcanvas}
-        placement="end"
-        scroll="true"
         show={show}
         onHide={handleClose}
+        placement="end"
+        scroll="true"
+        className={styles.offcanvas}
       >
-        <Offcanvas.Header bsPrefix={styles.offcanvas_header} closeButton>
-          <Offcanvas.Title bsPrefix={styles.offcanvas_title}>
+        <Offcanvas.Header className={styles.offcanvas_header} closeButton>
+          <Offcanvas.Title className={styles.offcanvas_title}>
             Menu
           </Offcanvas.Title>
         </Offcanvas.Header>
-        <Offcanvas.Body bsPrefix={styles.offcanvas_body}>
+        <Offcanvas.Body className={styles.offcanvas_body}>
           Some text as placeholder. In real life you can have the elements you
-          have chosen. Like, text, images, lists, etc
+          have chosen. Like, text, images, lists, etc.
         </Offcanvas.Body>
       </Offcanvas>
     </header>
