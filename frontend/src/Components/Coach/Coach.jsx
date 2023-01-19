@@ -38,7 +38,7 @@ const Coach = () => {
   return (
     <>
       <div>
-        <input className={styles.poisk} onChange={handleInput} placeholder='Поиск тренера...'/>
+        <input className={styles.poisk} onChange={handleInput} placeholder='Поиск определенного тренера...'/>
       </div>
       <div className={styles.mainBlock}>
         {filtered.map((coach) => {
