@@ -6,6 +6,7 @@ import Coach from "./Coach/Coach";
 import Simulators from "./Simulators/Simulators";
 import SignIn from "../Components/SignIn/SignIn";
 import SignUp from "../Components/SignUp/SignUp";
+import Main from "./Main/Main";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Header />
       <Routes>
       <Route path="/simulators" element={<Simulators />} />
+      <Route path="/" element={<Main/>}/>
         <Route path="/login" element={<SignIn/>}/>
         <Route path="/registration" element={<SignUp/>}/>
         <Route path="/coaches" element={<Coach />} />

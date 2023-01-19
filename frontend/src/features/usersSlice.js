@@ -38,8 +38,8 @@ export const authSignUp = createAsyncThunk(
         method: "POST",
         headers: {
           "Content-type": "application/json",
-          Authorization: `Bearer ${thunkAPI.getState().users.token}`,
         },
+        body: JSON.stringify({ login, password }),
       });
       const user = await res.json();
       if (user.error) {
