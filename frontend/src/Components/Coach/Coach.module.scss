@@ -1,61 +1,84 @@
 body {
-    background-color: #0d0d0d;
+  background-color: #0d0d0d;
 }
 
 .mainBlock {
-    color: white;
-    display: flex;
-    flex-wrap: wrap;
-    width: 80%;
-    justify-content: center;
-    margin-left: 10%;
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  justify-content: center;
+  margin-left: 10%;
 }
 
 .imgCoach {
-    width: 250px;
-    height: 250px;
+  width: 250px;
+  height: 250px;
 }
 
 .mapBlock {
-    display: flex;
-    flex-direction: column;
-    margin: 3% 3% 3% 3%;
-    border: 3px solid white;
+  display: flex;
+  flex-direction: column;
+  margin: 4% 3% 3% 3%;
+  border: 3px solid white;
 }
 
 .imgBlock {
-    border: 1px solid white;
+  border: 1px solid white;
 }
 
 .name {
-    display: flex;
-    justify-content: center;
-    font-family: 'Courier New';
-    margin-top: 5%;
+  display: flex;
+  justify-content: center;
+  font-family: "Courier New";
+  margin-top: 5%;
 }
 
 .description {
-    display: flex;
-    justify-content: center;
-    font-family: 'Courier';
-    margin-top: 5%;
+  display: flex;
+  justify-content: center;
+  font-family: "Courier";
+  margin-top: 5%;
 }
 
 .btn {
-    width: 70%;
-    margin-left: 15%;
+  width: 70%;
+  margin-left: 15%;
+  border: 2px solid white;
+  background-color: #0d0d0d;
+  color: white;
+  margin-top: 5%;
+  margin-bottom: 3%;
+
+  &:hover {
+    background-color: white;
+    color: #0d0d0d;
+  }
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+.inp {
+    border: 1px solid white;
+    background-color: black;
+    color: white;
+    margin: 1% 1% 1% 1%;
+    height: 7vh;
+    border-radius: 12px;
+}
+
+.poisk {
+    margin-top: 2%;
+    display: flex;
+    justify-content: center;
+    width: 50vw;
+    height: 6vh;
+    margin-left: 25%;
+    border-radius: 12px;
     border: 2px solid white;
     background-color: #0d0d0d;
     color: white;
-    margin-top: 5%;
-    margin-bottom: 3%;
-    
-    &:hover {
-        background-color: white;
-        color: #0d0d0d;
-    }
-}
-
-.pa {
-    color: black;
 }
