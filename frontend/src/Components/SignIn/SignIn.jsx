@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { authSignIn } from "../../features/usersSlice";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./SignIn.module.scss";
+import SignUp from "../SignUp/SignUp";
+import { Link } from "react-router-dom";
 
 const SignIn = () => {
   const error = useSelector((state) => state.users.error);
@@ -11,7 +13,7 @@ const SignIn = () => {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-console.log(token);
+  console.log(token);
   const handleSetLogin = (e) => {
     setLogin(e.target.value);
   };
@@ -24,18 +26,17 @@ console.log(token);
     dispatch(authSignIn({ login, password }));
   };
 
-//   useEffect(() => {
-//     if (successfully) {
-//       setStyle(styles.formBox);
-//     }
-//     if (token) {
-//       window.location.href = "/";
-//     }
-//   }, [token, successfully]);
+  //   useEffect(() => {
+  //     if (successfully) {
+  //       setStyle(styles.formBox);
+  //     }
+  //     if (token) {
+  //       window.location.href = "/";
+  //     }
+  //   }, [token, successfully]);
 
   return (
     <div>
-      <p>Login</p>
       <form action="#" onSubmit={handleLogin}>
         <input
           type="text"

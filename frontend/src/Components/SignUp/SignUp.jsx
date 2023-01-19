@@ -21,12 +21,11 @@ const SignUp = () => {
 
   const handleRegister = async (e) => {
     await e.preventDefault();
-    await dispatch(authSignUp({ login, password }));
+    dispatch(authSignUp({ login, password }));
   };
 
   return (
     <div>
-        <p>Registation</p>
       <form action="#" onSubmit={handleRegister}>
         <input
           type="text"

@@ -91,7 +91,12 @@ const usersSlice = createSlice({
       .addCase(fetchUser.fulfilled, (state, action) => {
         state.loading = false;
         state.error = false;
-        state.users = action.payload
+        action.payload.map((item) => {
+          if (item._id === localStorage.getItem("id")) {
+            state.users = item;
+          }
+          return state.users;
+        }); 
       })
       // POST ВХОД
       .addCase(authSignIn.rejected, (state, action) => {
