@@ -45,20 +45,6 @@ header {
 }
 
 .offcanvas {
-  background: linear-gradient(to right, #ccc, #5b5b5b, #fff);
-  background-size: 400% 400%;
-  animation: animate-background 10s infinite ease-in-out;
-  @keyframes animate-background {
-    0% {
-      background-position: 0 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0 50%;
-    }
-  }
   .offcanvas_header {
     .offcanvas_title {
       color: rgb(233, 229, 0);
@@ -66,36 +52,5 @@ header {
   }
 
   .offcanvas_body {
-    display: flex;
-    justify-content: space-around;
-
-    Button {
-      height: 40px;
-    }
   }
 }
-
-.modal {
-  .modalHeader {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #0d0d0d;
-
-    .modalTitle {
-      color: rgb(233, 229, 0);
-    }
-  }
-
-  .modalBody {
-    display: flex;
-    margin: 0;
-    padding: 0;
-  }
-
-  .modalFooter {
-    background-color: #0d0d0d;
-    color: rgb(233, 229, 0);
-  }
-}
-
