@@ -113,7 +113,6 @@ const SignUp = () => {
                 value={login}
               />
               <TextField
-                autoFocus
                 required
                 fullWidth
                 margin="normal"
