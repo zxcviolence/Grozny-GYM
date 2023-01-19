@@ -5,8 +5,10 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import styles from "./Header.module.scss";
 import logo from "../../images/logo.png";
+import gym from "../../images/gym.jpg";
 import SignIn from "../SignIn/SignIn";
 import SignUp from "../SignUp/SignUp";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [show, setShow] = useState(false);
@@ -17,24 +19,32 @@ const Header = () => {
   function MyVerticallyCenteredModal(props) {
     return (
       <Modal
+        className={styles.modal}
         {...props}
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered
-        backdrop="static"
+        // backdrop="static"
       >
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">
-            Логин/Регистрация
+        <Modal.Header className={styles.modalHeader} closeButton>
+          <Modal.Title
+            className={styles.modalTitle}
+            id="contained-modal-title-vcenter"
+          >
+            <h3>Вход | Регистрация</h3>
           </Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          <form action="#">
-            <SignIn />
-            <SignUp />
-          </form>
+        <Modal.Body className={styles.modalBody}>
+          <img src={gym} alt="" />
+          {/* <SignIn /> */}
+          <div>
+            Нет аккаунта? <Link navigate={<SignUp />}>Зарегистрироваться</Link>
+          </div>
+          <SignUp />
         </Modal.Body>
-        <Modal.Footer></Modal.Footer>
+        <Modal.Footer className={styles.modalFooter}>
+          Copyright © Grozny GYM 2023.
+        </Modal.Footer>
       </Modal>
     );
   }
@@ -69,7 +79,7 @@ const Header = () => {
           </Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body className={styles.offcanvas_body}>
-          <Button variant="primary" onClick={() => setModalShow(true)}>
+          <Button variant="dark" onClick={() => setModalShow(true)}>
             Авторизация
           </Button>
 
