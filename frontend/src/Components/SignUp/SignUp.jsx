@@ -133,7 +133,7 @@ const SignUp = () => {
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
               >
-                Войти
+                Зарегистрироваться
               </Button>
               <Grid container>
                 <Grid item xs>
