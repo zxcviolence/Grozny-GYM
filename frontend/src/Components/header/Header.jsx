@@ -3,12 +3,8 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import { GiHamburgerMenu } from "react-icons/gi";
 import styles from "./Header.module.scss";
 import logo from "../../images/logo.png";
-import SignIn from "../SignIn/SignIn";
-import SignUp from "../SignUp/SignUp";
 import { Link, NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { VscAccount } from "react-icons/vsc";
-import { BiLogOut } from "react-icons/bi";
 
 const Header = () => {
   const [show, setShow] = useState(false);
@@ -17,10 +13,10 @@ const Header = () => {
   const token = localStorage.getItem("token");
   const login = useSelector((state) => state.users.login);
 
-  const clearToken = () => {
-    window.location.reload();
-    localStorage.clear(token);
-  };
+  // const clearToken = () => {
+  //   window.location.reload();
+  //   localStorage.clear(token);
+  // };
 
   return (
     <header>
@@ -29,7 +25,7 @@ const Header = () => {
       </div>
 
       <div className={styles.routes}>
-      <NavLink
+        <NavLink
           style={({ isActive }) => {
             return {
               color: isActive ? "#fdc113" : "white",
@@ -101,19 +97,9 @@ const Header = () => {
         </Offcanvas.Header>
         <Offcanvas.Body className={styles.offcanvas_body}>
           <div className={styles.auth}>
-            <Link to="/login" hidden={token}>
-              Sign In
+            <Link to="/login">
+              <button className={styles.bottone1}>Авторизация</button>
             </Link>
-            {token && (
-              <div className={styles.username}>
-                <VscAccount className={styles.userIcon} />
-                {login} |
-                <button className={styles.exitButton} onClick={clearToken}>
-                  Log out
-                  <BiLogOut className={styles.logoutIcon} />
-                </button>
-              </div>
-            )}
           </div>
         </Offcanvas.Body>
       </Offcanvas>
