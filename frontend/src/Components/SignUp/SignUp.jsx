@@ -2,10 +2,8 @@ import React, { useState } from "react";
 import { authSignUp } from "../../features/usersSlice";
 import { useDispatch, useSelector } from "react-redux";
 import SignIn from "../SignIn/SignIn";
-
 import styles from "./SignUp.module.scss";
 import { Link } from "react-router-dom";
-
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -33,8 +31,8 @@ const SignUp = () => {
     setPassword(e.target.value);
   };
 
-  const handleRegister = async (e) => {
-    await e.preventDefault();
+  const handleRegister = (e) => {
+    e.preventDefault();
     dispatch(authSignUp({ login, password }));
   };
 
@@ -136,8 +134,7 @@ const SignUp = () => {
                 Зарегистрироваться
               </Button>
               <Grid container>
-                <Grid item xs>
-                </Grid>
+                <Grid item xs></Grid>
                 <Grid item>
                   <Link to="/login" element={<SignIn />} variant="body2">
                     {"Уже есть аккаунт? Войти"}
