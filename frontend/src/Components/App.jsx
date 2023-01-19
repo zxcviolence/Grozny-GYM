@@ -3,11 +3,13 @@ import Header from "./header/Header";
 import { Routes, Route } from "react-router-dom";
 import SportsBar from "./Sportsbar/SportsBar";
 import Coach from "./Coach/Coach";
+import Simulators from "./Simulators/Simulators";
 function App() {
   return (
     <div className="App">
       <Header />
       <Routes>
+      <Route path="/simulators" element={<Simulators />} />
         <Route path="/coaches" element={<Coach />} />
         <Route path="/sports_bar" element={<SportsBar />} />
       </Routes>

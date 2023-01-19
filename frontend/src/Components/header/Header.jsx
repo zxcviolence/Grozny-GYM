@@ -5,7 +5,7 @@ import styles from "./Header.module.scss";
 import logo from "../../images/logo.png";
 import SignIn from "../SignIn/SignIn";
 import SignUp from "../SignUp/SignUp";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Header = () => {
   const [show, setShow] = useState(false);
@@ -20,10 +20,58 @@ const Header = () => {
       </div>
 
       <div className={styles.routes}>
-        <div> Тренажёры </div>
-        <div> Тренеры </div>
-        <div> Массаж </div>
-        <div> Спортбар </div>
+      <NavLink
+          style={({ isActive }) => {
+            return {
+              color: isActive ? "#fdc113" : "white",
+              textDecoration: isActive ? "underline" : "none",
+              textUnderlineOffset: "6px",
+            };
+          }}
+          className={styles.navigationButton}
+          to="/simulators"
+        >
+          Тренажёры
+        </NavLink>
+        <NavLink
+          style={({ isActive }) => {
+            return {
+              color: isActive ? "#fdc113" : "white",
+              textDecoration: isActive ? "underline" : "none",
+              textUnderlineOffset: "6px",
+            };
+          }}
+          className={styles.navigationButton}
+          to="/coaches"
+        >
+          Тренеры
+        </NavLink>
+        <NavLink
+          style={({ isActive }) => {
+            return {
+              color: isActive ? "#fdc113" : "white",
+              textDecoration: isActive ? "underline" : "none",
+              textUnderlineOffset: "6px",
+            };
+          }}
+          className={styles.navigationButton}
+          to="/massage"
+        >
+          Массаж
+        </NavLink>
+        <NavLink
+          style={({ isActive }) => {
+            return {
+              color: isActive ? "#fdc113" : "white",
+              textDecoration: isActive ? "underline" : "none",
+              textUnderlineOffset: "6px",
+            };
+          }}
+          className={styles.navigationButton}
+          to="/sports_bar"
+        >
+          Спорт-Бар
+        </NavLink>
       </div>
 
       <div className={styles.burger} onClick={handleShow}>
