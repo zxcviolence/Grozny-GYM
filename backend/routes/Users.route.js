@@ -4,7 +4,7 @@ const { check } = require("express-validator");
 const router = Router();
 const authMiddleware = require("../middleware/auth.middleware");
 
-router.get("/", authMiddleware, usersController.getUsers);
+router.get("/users", authMiddleware, usersController.getUsers);
 router.post(
   "/registration",
   [

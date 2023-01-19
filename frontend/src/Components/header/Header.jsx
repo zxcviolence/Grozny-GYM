@@ -7,7 +7,6 @@ import SignIn from "../SignIn/SignIn";
 import SignUp from "../SignUp/SignUp";
 import { Link, NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import { VscAccount } from "react-icons/vsc";
 import { BiLogOut } from "react-icons/bi";
 
