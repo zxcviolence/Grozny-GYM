@@ -3,7 +3,7 @@ const { categoriesController } = require("../controllers/Category.controller");
 
 const router = Router();
 
-router.get("/category", categoriesController.getCats);
+router.get("/", categoriesController.getCats);
 router.post("/category", categoriesController.addCategory);
 router.patch("/category/:id", categoriesController.updateCats);
 router.delete("/category/:id", categoriesController.removeCats);

@@ -2,9 +2,10 @@ const { Router } = require("express");
 
 const router = Router();
 
-router.use("/", require("./Users.route"));
+router.use("/users", require("./Users.route"));
 router.use("/goods", require("./Goods.route"));
-router.use("/", require("./Category.route"));
-router.use(require("./Coach.route"));
+router.use("/category", require("./Category.route"));
+router.use('/coaches', require("./Coach.route"));
+router.use('/simulators', require('./Simulators.route'))
 
 module.exports = router;

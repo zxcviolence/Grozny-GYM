@@ -3,7 +3,7 @@ const { coachesController } = require("../controllers/Coaches.controller");
 
 const router = Router();
 
-router.get("/coaches", coachesController.getCoach);
+router.get("/", coachesController.getCoach);
 router.post("/coach", coachesController.addCoach);
 router.delete('/coach/:id', coachesController.deleteCoach);
 router.patch('/coaches/:id', coachesController.updateCoach);
