@@ -1,7 +1,7 @@
 header {
   width: 100%;
   height: 15vh;
-  background-color: #0d0d0d;
+  background-color: #212121;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -20,7 +20,7 @@ header {
       align-items: center;
       font-size: 30px;
       margin-left: 2vw;
-      color: rgb(233, 229, 0);
+      color: #960018;
     }
   }
 
@@ -28,26 +28,27 @@ header {
     display: flex;
     justify-content: space-between;
     width: 50%;
-    color: white;
   }
 
   .burger {
-    color: #fdc113;
+    color: #960018;
     font-size: 40px;
     margin: 0 30px;
     transition: 0.3s;
+    cursor: pointer;
 
     &:hover {
-      color: #fdbf06cb;
+      color: #960018;
       transition: 0.3s;
     }
   }
 }
 
 .offcanvas {
+  background-color: #fffaf0;
   .offcanvas_header {
     .offcanvas_title {
-      color: rgb(233, 229, 0);
+      color: #212121;
     }
   }
 
@@ -55,23 +56,28 @@ header {
   }
 }
 
-.bottone1 {
-  padding: 16px 33px;
-  border-radius: 9px;
-  background: #d5f365;
-  border: none;
-  font-family: inherit;
-  text-align: center;
-  cursor: pointer;
-  transition: 0.4s;
+.auth {
+  display: flex;
+  justify-content: center;
 
-  .bottone1:hover {
-    box-shadow: 7px 5px 56px -14px #c3d900;
-  }
+  .bottone1 {
+    padding: 10px 23px;
+    margin: 10%;
+    border-radius: 9px;
+    background: #960018;
+    border: none;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.4s;
+    color: #212121;
 
-  .bottone1:active {
-    transform: scale(0.97);
-    box-shadow: 7px 5px 56px -10px #c3d900;
+    &:hover {
+      box-shadow: 7px 5px 56px -14px #212121;
+    }
+
+    &:active {
+      transform: scale(0.97);
+      box-shadow: 7px 5px 56px -10px #212121;
+    }
   }
-  
 }

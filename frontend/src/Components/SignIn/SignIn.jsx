@@ -58,6 +58,10 @@ const SignIn = () => {
     await dispatch(authSignIn({ login, password }));
   };
 
+  if (loading) {
+    return "Loading...";
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <Grid container component="main" sx={{ height: "100vh" }}>
@@ -115,7 +119,6 @@ const SignIn = () => {
                 value={login}
               />
               <TextField
-                autoFocus
                 required
                 fullWidth
                 margin="normal"

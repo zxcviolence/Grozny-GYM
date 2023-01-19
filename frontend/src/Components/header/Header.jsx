@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { GiHamburgerMenu } from "react-icons/gi";
-import styles from "./Header.module.scss";
-import logo from "../../images/logo.png";
 import { Link, NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
+import styles from "./Header.module.scss";
+import logo from "../../images/logo.png";
 
 const Header = () => {
   const [show, setShow] = useState(false);
@@ -18,6 +18,11 @@ const Header = () => {
   //   localStorage.clear(token);
   // };
 
+  const handleClick = () => {
+    setShow(true);
+    window.location.href = "/login";
+  };
+
   return (
     <header>
       <div className={styles.logo}>
@@ -28,7 +33,7 @@ const Header = () => {
         <NavLink
           style={({ isActive }) => {
             return {
-              color: isActive ? "#fdc113" : "white",
+              color: isActive ? "#960018" : "white",
               textDecoration: isActive ? "underline" : "none",
               textUnderlineOffset: "6px",
             };
@@ -41,7 +46,7 @@ const Header = () => {
         <NavLink
           style={({ isActive }) => {
             return {
-              color: isActive ? "#fdc113" : "white",
+              color: isActive ? "#960018" : "white",
               textDecoration: isActive ? "underline" : "none",
               textUnderlineOffset: "6px",
             };
@@ -54,7 +59,7 @@ const Header = () => {
         <NavLink
           style={({ isActive }) => {
             return {
-              color: isActive ? "#fdc113" : "white",
+              color: isActive ? "#960018" : "white",
               textDecoration: isActive ? "underline" : "none",
               textUnderlineOffset: "6px",
             };
@@ -67,7 +72,7 @@ const Header = () => {
         <NavLink
           style={({ isActive }) => {
             return {
-              color: isActive ? "#fdc113" : "white",
+              color: isActive ? "#960018" : "white",
               textDecoration: isActive ? "underline" : "none",
               textUnderlineOffset: "6px",
             };
@@ -98,7 +103,9 @@ const Header = () => {
         <Offcanvas.Body className={styles.offcanvas_body}>
           <div className={styles.auth}>
             <Link to="/login">
-              <button className={styles.bottone1}>Авторизация</button>
+              <button onClick={handleClick} className={styles.bottone1}>
+                <strong>Авторизация</strong>
+              </button>
             </Link>
           </div>
         </Offcanvas.Body>
