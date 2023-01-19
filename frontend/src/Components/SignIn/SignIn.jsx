@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { authSignIn } from "../../features/usersSlice";
 import { useDispatch, useSelector } from "react-redux";
-import styles from "./SignIn.module.scss";
-import SignUp from "../SignUp/SignUp";
 import { Link } from "react-router-dom";
+import SignUp from "../SignUp/SignUp";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -16,16 +15,16 @@ import Grid from "@mui/material/Grid";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import styles from "./SignIn.module.scss";
 
 const SignIn = () => {
   const error = useSelector((state) => state.users.error);
   const loading = useSelector((state) => state.users.loading);
   const successfully = useSelector((state) => state.users.successfully);
-  const token = localStorage.getItem("token");
+  const token = useSelector((state) => state.users.token);
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  console.log(token);
   const handleSetLogin = (e) => {
     setLogin(e.target.value);
   };
@@ -54,7 +53,8 @@ const SignIn = () => {
 
   const theme = createTheme();
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    await e.preventDefault();
     await dispatch(authSignIn({ login, password }));
   };
 

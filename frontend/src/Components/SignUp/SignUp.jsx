@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { authSignUp } from "../../features/usersSlice";
 import { useDispatch, useSelector } from "react-redux";
-import SignIn from "../SignIn/SignIn";
-import styles from "./SignUp.module.scss";
 import { Link } from "react-router-dom";
+import SignIn from "../SignIn/SignIn";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -14,6 +13,7 @@ import Grid from "@mui/material/Grid";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import styles from "./SignUp.module.scss";
 
 const SignUp = () => {
   const error = useSelector((state) => state.users.error);
@@ -31,9 +31,9 @@ const SignUp = () => {
     setPassword(e.target.value);
   };
 
-  const handleRegister = (e) => {
-    e.preventDefault();
-    dispatch(authSignUp({ login, password }));
+  const handleRegister = async (e) => {
+    await e.preventDefault();
+    await dispatch(authSignUp({ login, password }));
   };
 
   function Copyright(props) {
