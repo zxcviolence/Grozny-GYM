@@ -21,7 +21,6 @@ const Coach = () => {
   const filtered = coaches.filter((coach) => {
     return coach.name.toLowerCase().includes(text.toLowerCase());
   })
-  console.log(filtered);
 
   useEffect(() => {
     dispatch(fetchCoaches());
@@ -36,7 +35,7 @@ const Coach = () => {
   }
 
   return (
-    <>
+    <div className={styles.glavniyBLock}>
       <div>
         <input className={styles.poisk} onChange={handleInput} placeholder='Поиск определенного тренера...'/>
       </div>
@@ -66,16 +65,17 @@ const Coach = () => {
         })}
         <Modal active={modalActive} setActive={setModalActive}>
           <div>
-            <button onClick={() => setModalActive(false)}>X</button>
+            <button className={styles.closeBtn} onClick={() => setModalActive(false)}>X</button>
           </div>
           <div className={styles.info}>
             <input className={styles.inp} placeholder="Введите свою фамилию" />
             <input className={styles.inp} placeholder="Введите свое имя" />
             <input className={styles.inp} placeholder="Введите свое отчество" />
+            <button>Отправить</button>
           </div>
         </Modal>
       </div>
-    </>
+    </div>
   );
 };
 
