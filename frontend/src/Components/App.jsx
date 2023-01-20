@@ -11,12 +11,15 @@ import Main from "./Main/Main";
 function App() {
   return (
     <div className="App">
+      <audio autoPlay>
+        <source src={"assets/music/song.mp3"} />
+      </audio>
       <Header />
       <Routes>
-      <Route path="/simulators" element={<Simulators />} />
-      <Route path="/" element={<Main/>}/>
-        <Route path="/login" element={<SignIn/>}/>
-        <Route path="/registration" element={<SignUp/>}/>
+        <Route path="/simulators" element={<Simulators />} />
+        <Route path="/" element={<Main />} />
+        <Route path="/login" element={<SignIn />} />
+        <Route path="/registration" element={<SignUp />} />
         <Route path="/coaches" element={<Coach />} />
         <Route path="/sports_bar" element={<SportsBar />} />
       </Routes>
