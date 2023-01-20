@@ -13,6 +13,9 @@ import Massage from "./Massage/Massage";
 function App() {
   return (
     <div className="App">
+      <audio autoPlay>
+        <source src={"assets/music/song.mp3"} />
+      </audio>
       <Header />
       <Routes>
         <Route path="/simulators" element={<Simulators />} />

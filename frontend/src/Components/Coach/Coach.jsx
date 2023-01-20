@@ -41,9 +41,9 @@ const Coach = () => {
           placeholder="Поиск определенного тренера..."
         />
       </div>
-      <div className={styles.mainBlock}>
+<div className={styles.mainBlock}>
         {filtered.map((coach) => {
-          return <CoachCard coach={coach} key={coach._id}/>;
+          return  <CoachCard coach={coach} key={coach._id}/>;
         })}
       </div>
     </div>

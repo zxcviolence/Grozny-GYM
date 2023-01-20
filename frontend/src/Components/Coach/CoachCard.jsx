@@ -2,11 +2,12 @@ import React from "react";
 import { useState } from "react";
 import styles from "./Coach.module.scss"
 import Modal from "./Modal";
-
+import Fade from "react-reveal/Fade";
 const CoachCard = ({coach}) => {
     const [modalActive, setModalActive] = useState(false);
 
-  return (
+  return (  
+    <Fade bottom cascade>
     <div className={styles.mapBlock} key={coach._id}>
       <div className={styles.imgBlock}>
         <img
@@ -20,6 +21,7 @@ const CoachCard = ({coach}) => {
       <button className={styles.btn} onClick={() => setModalActive(true)}>
         Записаться
       </button>
+      
       {modalActive === true ? (
         <Modal
           modalActive={modalActive}
@@ -27,7 +29,9 @@ const CoachCard = ({coach}) => {
           coach={coach}
         />
       ) : null}
-    </div>
+      
+    </div></Fade>
+  
   );
 };
 
