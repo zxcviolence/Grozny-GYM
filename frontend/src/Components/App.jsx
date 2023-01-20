@@ -6,6 +6,7 @@ import Coach from "./Coach/Coach";
 import Simulators from "./Simulators/Simulators";
 import SignIn from "../Components/SignIn/SignIn";
 import SignUp from "../Components/SignUp/SignUp";
+import Profile from "../Components/Profile/Profile";
 import Main from "./Main/Main";
 
 function App() {
@@ -13,12 +14,13 @@ function App() {
     <div className="App">
       <Header />
       <Routes>
-      <Route path="/simulators" element={<Simulators />} />
-      <Route path="/" element={<Main/>}/>
-        <Route path="/login" element={<SignIn/>}/>
-        <Route path="/registration" element={<SignUp/>}/>
+        <Route path="/simulators" element={<Simulators />} />
+        <Route path="/" element={<Main />} />
+        <Route path="/login" element={<SignIn />} />
+        <Route path="/registration" element={<SignUp />} />
         <Route path="/coaches" element={<Coach />} />
         <Route path="/sports_bar" element={<SportsBar />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </div>
   );
