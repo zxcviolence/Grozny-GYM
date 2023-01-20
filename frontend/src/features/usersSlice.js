@@ -6,6 +6,7 @@ const initialState = {
   users: [],
   token: localStorage.getItem("token"),
   id: localStorage.getItem("id"),
+  login: localStorage.getItem("login"),
 };
 
 export const authSignIn = createAsyncThunk(

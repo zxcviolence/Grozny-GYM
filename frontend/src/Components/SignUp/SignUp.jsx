@@ -6,6 +6,8 @@ import SignIn from "../SignIn/SignIn";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
 import TextField from "@mui/material/TextField";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
@@ -132,6 +134,10 @@ const SignUp = () => {
               >
                 Зарегистрироваться
               </Button>
+              <FormControlLabel
+                control={<Checkbox value="remember" color="primary" />}
+                label="Я ознакомлен с правилами и согласен на обработку персональных данных"
+              />
               <Grid container>
                 <Grid item xs></Grid>
                 <Grid item>
