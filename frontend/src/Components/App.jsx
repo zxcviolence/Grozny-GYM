@@ -4,10 +4,11 @@ import { Routes, Route } from "react-router-dom";
 import SportsBar from "./Sportsbar/SportsBar";
 import Coach from "./Coach/Coach";
 import Simulators from "./Simulators/Simulators";
-import SignIn from "../Components/SignIn/SignIn";
-import SignUp from "../Components/SignUp/SignUp";
-import Profile from "../Components/Profile/Profile";
+import SignIn from "./SignIn/SignIn";
+import SignUp from "./SignUp/SignUp";
+import Profile from "./Profile/Profile";
 import Main from "./Main/Main";
+import Massage from "./Massage/Massage";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/coaches" element={<Coach />} />
         <Route path="/sports_bar" element={<SportsBar />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/massage" element={<Massage />} />
       </Routes>
     </div>
   );

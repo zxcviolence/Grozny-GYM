@@ -5,6 +5,7 @@
   width: 80%;
   justify-content: center;
   margin-left: 10%;
+
 }
 
 .imgCoach {
@@ -16,7 +17,8 @@
   display: flex;
   flex-direction: column;
   margin: 4% 3% 3% 3%;
-  border: 3px solid black;
+  background-color: white;
+  // position: relative;
 }
 
 .imgBlock {
@@ -47,39 +49,77 @@
   margin-bottom: 3%;
 
   &:hover {
-    background-color: black;
+    background-color: #960018;
     color: white;
   }
 }
 
-.info {
-  display: flex;
-  flex-direction: column;
-}
-
-.inp {
-    border: 1px solid black;
-    background-color: white;
-    color: black;
-    margin: 1% 1% 1% 1%;
-    height: 7vh;
-    border-radius: 12px;
-}
-
 .poisk {
-    margin-top: 2%;
-    display: flex;
-    justify-content: center;
-    width: 50vw;
-    height: 6vh;
-    margin-left: 25%;
-    border-radius: 12px;
-    border: 2px solid black;
-    background-color: white;
-    color: black;
+  margin-top: 2%;
+  display: flex;
+  justify-content: center;
+  width: 50vw;
+  height: 6vh;
+  margin-left: 25%;
+  border-radius: 12px;
+  border: 2px solid black;
+  background-color: white;
+  color: black;
+}
+
+.closeBlock {
+  display: flex;
+  justify-content: end;
 }
 
 .closeBtn {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 12px;
+  width: 3%;
+  height: 5vh;
+  font-size: 20px;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background-color: #960018;
+    color: white;
+  }
+}
+
+.sendingBlock {
   display: flex;
-  justify-content: end;
+  justify-content: center;
+}
+
+.sendingBtn {
+  width: 25%;
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+  font-size: 20px;
+  border-radius: 15px;
+
+  &:hover {
+    background-color: #960018;
+    color: white;
+  }
+}
+
+.modalBlock {
+  background-color: black;
+  color: white;
+  position: fixed;
+  width: 95vw;
+  height: 90vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  transition: 0.4s all;
+}
+
+.glavniyBlock {
+  position: relative;
 }
