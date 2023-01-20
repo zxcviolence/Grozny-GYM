@@ -97,7 +97,7 @@ const SignIn = () => {
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
-              Вход
+              Войти в личный кабинет
             </Typography>
             <Box
               component="form"

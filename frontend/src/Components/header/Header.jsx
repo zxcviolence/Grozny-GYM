@@ -13,13 +13,13 @@ const Header = () => {
   const token = localStorage.getItem("token");
   const login = useSelector((state) => state.users.login);
 
-  // const clearToken = () => {
-  //   window.location.reload();
-  //   localStorage.clear(token);
-  // };
+  const clearToken = () => {
+    window.location.reload();
+    localStorage.clear(token);
+  };
 
   const handleClick = () => {
-    setShow(true);
+    setShow(false);
     window.location.href = "/login";
   };
 
@@ -102,12 +102,26 @@ const Header = () => {
         </Offcanvas.Header>
         <Offcanvas.Body className={styles.offcanvas_body}>
           <div className={styles.auth}>
-            <Link to="/login">
+            <Link to="/login" hidden={token}>
               <button onClick={handleClick} className={styles.bottone1}>
-                <strong>Авторизация</strong>
+                <strong>Личный кабинет</strong>
               </button>
             </Link>
           </div>
+          {token && (
+            <>
+              <div className={styles.profilebox}>
+                <div className={styles.nickname}>{login}</div> |
+                <div className={styles.profile}>
+                  <Link to="/profile">Личный кабинет</Link>
+                </div>
+                |
+                <div className={styles.logoutbtn}>
+                  <button onClick={clearToken}>Выйти</button>
+                </div>
+              </div>
+            </>
+          )}
         </Offcanvas.Body>
       </Offcanvas>
     </header>
