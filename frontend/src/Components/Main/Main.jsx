@@ -1,11 +1,16 @@
-import React from 'react';
-import styles from './Main.module.scss'
+
+import React from "react";
+import CardAb from "./cardAboniment/CardAb";
+import ContentOne from "./ContentOne/ContentOne";
+import styles from "./Main.module.scss";
 
 const Main = () => {
-    return (
-       <>
-       </>
-    );
+  return (
+    <div className={styles.Main_Container}>
+     <ContentOne />
+     <CardAb />
+    </div>
+  );
 };
 
 export default Main;
