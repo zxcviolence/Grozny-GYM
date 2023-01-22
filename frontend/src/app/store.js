@@ -4,6 +4,7 @@ import coach from "../features/coachSlice";
 import users from "../features/usersSlice";
 import simulators from "../features/simulatorsSlice";
 import form from "../features/formSlice";
+import massage from "../features/massageSlice";
 
 export const store = configureStore({
   reducer: {
@@ -12,5 +13,6 @@ export const store = configureStore({
     users,
     coach,
     form,
+    massage,
   },
 });

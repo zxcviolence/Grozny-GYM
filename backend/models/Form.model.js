@@ -13,6 +13,10 @@ const formSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  forWhichMassage: {
+    type: String,
+    required: true,
+  },
 });
 
 const Form = mongoose.model("Form", formSchema);

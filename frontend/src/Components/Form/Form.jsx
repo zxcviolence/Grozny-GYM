@@ -32,6 +32,7 @@ const Form = () => {
               <div>Имя: {item.name}</div>
               <div>Телефон: {item.phone}</div>
               <div>Эл. почта: {item.email}</div>
+              <div>На массаж: {item.forWhichMassage}</div>
             </div>
           );
         })}
