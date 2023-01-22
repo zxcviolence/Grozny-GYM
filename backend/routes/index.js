@@ -7,5 +7,6 @@ router.use("/goods", require("./Goods.route"));
 router.use("/category", require("./Category.route"));
 router.use('/coaches', require("./Coach.route"));
 router.use('/simulators', require('./Simulators.route'))
+router.use("/", require("./Subscription.route"))
 
 module.exports = router;

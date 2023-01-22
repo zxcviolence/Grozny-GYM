@@ -8,7 +8,12 @@ const userSchema = mongoose.Schema({
     password: {
         type: String,
         require: true,
-    }
+    },
+    subscription: {
+        ref: "Subscription",
+        type: mongoose.SchemaTypes.ObjectId,
+        default: null,
+      },
 })
 const User = mongoose.model("User", userSchema)
 
