@@ -10,12 +10,13 @@ module.exports.formController = {
     }
   },
   postForm: async (req, res) => {
-    const { name, phone, email } = req.body;
+    const { name, phone, email, forWhichMassage } = req.body;
     try {
       const form = await Form.create({
         name,
         phone,
         email,
+        forWhichMassage,
       });
       return res.json(form);
     } catch (error) {

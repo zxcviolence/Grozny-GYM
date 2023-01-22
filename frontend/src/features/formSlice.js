@@ -6,33 +6,30 @@ const initialState = {
   error: null,
 };
 
-export const getForm = createAsyncThunk(
-  "get/form",
-  async (_, thunkAPI) => {
-    try {
-      const res = await fetch("/admin/form");
-      const form = await res.json();
+export const getForm = createAsyncThunk("get/form", async (_, thunkAPI) => {
+  try {
+    const res = await fetch("/admin/form");
+    const form = await res.json();
 
-      if (form.error) {
-        return thunkAPI.rejectWithValue(form.error);
-      }
-      return thunkAPI.fulfillWithValue(form)
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+    if (form.error) {
+      return thunkAPI.rejectWithValue(form.error);
     }
+    return thunkAPI.fulfillWithValue(form);
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
   }
-);
+});
 
 export const postForm = createAsyncThunk(
   "post/form",
-  async ({ name, phone, email }, thunkAPI) => {
+  async ({ name, phone, email, forWhichMassage }, thunkAPI) => {
     try {
       const res = await fetch("admin/form", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ name, phone, email }),
+        body: JSON.stringify({ name, phone, email, forWhichMassage }),
       });
       const form = await res.json();
       return thunkAPI.fulfillWithValue(form);
