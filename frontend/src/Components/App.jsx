@@ -10,6 +10,7 @@ import Profile from "./Profile/Profile";
 import Main from "./Main/Main";
 import Massage from "./Massage/Massage";
 import Form from "./Form/Form";
+import Footer from "./Footer/Footer";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/massage" element={<Massage />} />
         <Route path="/admin/form" element={<Form/>}/>
       </Routes>
+      <Footer/>
     </div>
   );
 }
