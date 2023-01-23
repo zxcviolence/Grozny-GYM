@@ -9,13 +9,11 @@ import SignUp from "./SignUp/SignUp";
 import Profile from "./Profile/Profile";
 import Main from "./Main/Main";
 import Massage from "./Massage/Massage";
+import Form from "./Form/Form";
 
 function App() {
   return (
     <div className="App">
-      <audio autoPlay>
-        <source src={"assets/music/song.mp3"} />
-      </audio>
       <Header />
       <Routes>
         <Route path="/simulators" element={<Simulators />} />
@@ -26,6 +24,7 @@ function App() {
         <Route path="/sports_bar" element={<SportsBar />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/massage" element={<Massage />} />
+        <Route path="/admin/form" element={<Form/>}/>
       </Routes>
     </div>
   );
