@@ -26,7 +26,7 @@ const Header = () => {
   return (
     <header>
       <div className={styles.logo}>
-        <img src={logo} alt="logoPhoto" className={styles.logoImage} />
+      <a href="/">  <img src={logo} alt="logoPhoto" className={styles.logoImage} /></a>
       </div>
 
       <div className={styles.routes}>
