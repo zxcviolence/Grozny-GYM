@@ -8,6 +8,18 @@ const userSchema = mongoose.Schema({
     password: {
         type: String,
         require: true,
+    },
+    subscription: {
+        ref: "Subscription",
+        type: mongoose.SchemaTypes.ObjectId,
+        default: null,
+      },
+    role: [{
+        type: String,
+        default: "user",
+    }],
+    image: {
+        type: String,
     }
 })
 const User = mongoose.model("User", userSchema)

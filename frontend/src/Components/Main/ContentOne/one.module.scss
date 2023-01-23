@@ -1,18 +1,15 @@
 .content_container1{
+    width: 90vw;
     margin-top: 4%;
     display: flex;
     flex-direction: column;
-    color: orange;
     flex-wrap: wrap;
     align-items: center;
-
     .items_ctr1{
         margin-top: 4%;
-        width: 100vw;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
-
         .item_ctr{
             text-align: center;
             display: flex;
@@ -21,7 +18,6 @@
             align-items: center;
             width: 26vw;
             height: 12vw;
-            max-height: 15vw;
             word-wrap: break-word;
             margin-bottom: 2%;
             color: rgb(255, 255, 255);

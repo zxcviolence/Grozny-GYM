@@ -10,6 +10,7 @@ import Fade from "react-reveal/Fade";
 import styles from "./Massage.module.scss";
 import photo from "../../images/massage2.jpg";
 import photo2 from "../../images/massage.jpg";
+import { separator } from "../helpers/separator";
 
 const Massage = () => {
   const massage = useSelector((state) => state.massage.massage);
@@ -141,11 +142,11 @@ const Massage = () => {
                   <h3>{item.name}</h3>
                   <hr />
                 </div>
-                <div>
+                <div className={styles.textContainer}>
                   <h6>{item.description}</h6>
                 </div>
                 <div>
-                  <p>{item.price} ₽</p>
+                  <p>{separator(item.price)} ₽</p>
                 </div>
               </div>
             );

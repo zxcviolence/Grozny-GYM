@@ -11,12 +11,15 @@ import Main from "./Main/Main";
 import Massage from "./Massage/Massage";
 import Form from "./Form/Form";
 import Footer from "./Footer/Footer";
+import Admin from "./AdminPanel/Admin";
 
 function App() {
   return (
     <div className="App">
-      <Header />
+   
+    { window.location.pathname === '/admin' ? null : <Header/>}
       <Routes>
+        <Route path="/admin" element={<Admin />} />
         <Route path="/simulators" element={<Simulators />} />
         <Route path="/" element={<Main />} />
         <Route path="/login" element={<SignIn />} />
@@ -25,7 +28,7 @@ function App() {
         <Route path="/sports_bar" element={<SportsBar />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/massage" element={<Massage />} />
-        <Route path="/admin/form" element={<Form/>}/>
+        <Route path="/admin/form" element={<Form />} />
       </Routes>
       <Footer/>
     </div>

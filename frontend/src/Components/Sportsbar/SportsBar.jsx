@@ -12,12 +12,12 @@ import {
   CardMedia,
   Typography,
 } from "@mui/material";
+import { separator } from "../helpers/separator";
 
 const SportsBar = () => {
   const dispatch = useDispatch();
 
   const goods = useSelector((state) => state.goods.goods);
-  console.log(goods);
 
   useEffect(() => {
     dispatch(fetchGoods());
@@ -51,7 +51,7 @@ const SportsBar = () => {
                     {item.name}
                   </Typography>
                   <Typography variant="body" color="#ff6f3c">
-                    Цена:{item.price}
+                    Цена: { separator(item.price)} ₽
                   </Typography>
                 </CardContent>
                   <Button size="small">Узнать больше</Button>
