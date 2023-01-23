@@ -50,7 +50,7 @@ const SportsBar = () => {
                     {item.name}
                   </Typography>
                   <Typography variant="body" color="#ff6f3c">
-                    Цена:{item.price}
+                    Цена: {item.price} ₽
                   </Typography>
                 </CardContent>
                   <Button size="small">Узнать больше</Button>

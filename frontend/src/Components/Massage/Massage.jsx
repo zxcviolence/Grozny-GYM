@@ -141,7 +141,7 @@ const Massage = () => {
                   <h3>{item.name}</h3>
                   <hr />
                 </div>
-                <div>
+                <div className={styles.textContainer}>
                   <h6>{item.description}</h6>
                 </div>
                 <div>
