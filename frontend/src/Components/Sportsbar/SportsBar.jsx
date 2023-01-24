@@ -12,6 +12,7 @@ import {
   CardMedia,
   Typography,
 } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const SportsBar = () => {
   const dispatch = useDispatch();
@@ -31,6 +32,7 @@ const SportsBar = () => {
         {goods.map((item) => {
           return (
             <Fade key={item._id} bottom cascade>
+              
               <Card
                 className={styles.card_item}
                 sx={{ maxWidth: 350, height: "95%", minWidth: 350 }}
@@ -53,8 +55,9 @@ const SportsBar = () => {
                     Цена:{item.price}
                   </Typography>
                 </CardContent>
-                  <Button size="small">Узнать больше</Button>
+                <Link to={`${item._id}`}> <Button size="small">Узнать больше</Button>   </Link>
               </Card>
+           
             </Fade>
           );
         })}

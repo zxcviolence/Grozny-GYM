@@ -10,6 +10,15 @@ module.exports.GoodsController = {
       return res.status({ error: error.message });
     }
   },
+  
+  getGoodsID: async (req, res) => {
+    try {
+      const goods = await Goods.findById(req.params.id);
+      res.json(goods);
+    } catch (error) {
+      return res.status({ error: error.message });
+    }
+  },
 
   addGoods: async (req, res) => {
     try {

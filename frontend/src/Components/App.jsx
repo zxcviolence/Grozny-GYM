@@ -10,6 +10,7 @@ import Profile from "./Profile/Profile";
 import Main from "./Main/Main";
 import Massage from "./Massage/Massage";
 import Form from "./Form/Form";
+import OneElementBar from "./Sportsbar/oneElementBar/OneElementBar";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/registration" element={<SignUp />} />
         <Route path="/coaches" element={<Coach />} />
         <Route path="/sports_bar" element={<SportsBar />} />
+        <Route path="/sports_bar/:id" element={<OneElementBar />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/massage" element={<Massage />} />
         <Route path="/admin/form" element={<Form/>}/>
