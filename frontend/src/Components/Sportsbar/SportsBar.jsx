@@ -14,6 +14,7 @@ import {
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import { separator } from "../helpers/separator";
+import RubberBand from 'react-reveal/RubberBand';
 
 
 const SportsBar = () => {
@@ -27,9 +28,9 @@ const SportsBar = () => {
 
   return (
     <div className={styles.main_unit}>
-      <Flip bottom>
+      <RubberBand >
         <h1 className={styles.h1}>Спорт Бар</h1>
-      </Flip>
+      </RubberBand>
       <div className={styles.main_content}>
         {goods.map((item) => {
           return (

@@ -23,11 +23,8 @@ module.exports.subscriptionsController = {
 
   getAllSubscriptions: async (req, res) => {
     try {
-
       const subscriptions = await Subscription.find()
-
       res.json(subscriptions)
-      
     } catch (e) {
       res.json(e);
     }
