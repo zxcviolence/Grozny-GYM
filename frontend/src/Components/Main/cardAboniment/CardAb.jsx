@@ -8,7 +8,7 @@ const CardAb = () => {
                 <div className={styles.images}>
                 </div>
                 <div className={styles.information}>
-                    <h3>Абонимент</h3>
+                    <h3>Обонемент</h3>
                     <span>от 1500р</span>
                 </div>
             </div>
@@ -17,7 +17,7 @@ const CardAb = () => {
                 <div className={styles.images}>
                 </div>
                 <div className={styles.information}>
-                    <h3>Абонимент</h3>
+                    <h3>Обонемент</h3>
                     <span>от 1500р</span>
                 </div>
             </div>
@@ -26,7 +26,7 @@ const CardAb = () => {
                 <div className={styles.images}>
                 </div>
                 <div className={styles.information}>
-                    <h3>Абонимент</h3>
+                    <h3>Обонемент</h3>
                     <span>от 1500р</span>
                 </div>
             </div>
