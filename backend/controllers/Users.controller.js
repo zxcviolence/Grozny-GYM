@@ -15,8 +15,10 @@ module.exports.usersController = {
   login: async (req, res) => {
     try {
       const { login, password } = req.body;
-      if(login.length === 0 ){
-        return res.status(401).json({ error: 'Имя пользователя не должно быть пустым'})
+      if (login.length === 0) {
+        return res
+          .status(401)
+          .json({ error: "Имя пользователя не должно быть пустым" });
       }
       const errors = validationResult(req);
       const candidate = await User.findOne({ login });
@@ -88,6 +90,7 @@ module.exports.usersController = {
       res.status(400).json("Registration Error" + error);
     }
   },
+
   getAssemblyCart: async (req, res) => {
     try {
       const { userId } = req.params;
@@ -99,6 +102,18 @@ module.exports.usersController = {
       res.status(400).json(error.message);
     }
   },
+  //ДОБАВЛЕНИЕ АОНЕМЕНТА
+  addToSubscription: async (req, res) => {
+    try {
+      const addToSubs = await User.findByIdAndUpdate(req.params.id, {
+       $push :{subscription: req.body.subscription} 
+      }, {new: true})
+      res.json(addToSubs)
+    } catch (error) {
+      res.status(400).json(error.message);
+    }
+  },
+
   addToCartAssembly: async (req, res) => {
     try {
       const { userId } = req.params;

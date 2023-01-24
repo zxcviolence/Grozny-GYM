@@ -30,5 +30,6 @@ router.post(
 router.patch('/addtoCart/:userId/:assemblyId', authMiddleware, usersController.addToCartAssembly)
 router.get('/cart/:userId',  usersController.getAssemblyCart)
 router.patch('/delete/cart/:userId/:assemblyId', authMiddleware, usersController.deleteAssemblyfromCart)
+router.patch("/addtoSubs/:id", authMiddleware, usersController.addToSubscription)
 
 module.exports = router;

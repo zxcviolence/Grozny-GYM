@@ -9,7 +9,7 @@
         border: 1px solid #232;
         display: flex;
         flex-direction: column;
-        width: 25vw;
+        width: 19vw;
         height: 13vw;
         border-radius: 15px;
         color: rgb(255, 255, 255);
@@ -21,13 +21,17 @@
         margin-bottom: 2%;
 
         .images {
-            background: url("https://img3.akspic.ru/crops/5/9/7/9/4/149795/149795-shina-ves-uprazhnenie-silovye_trenirovki-sportivnoe_oborudovanie-1920x1080.jpg");
+            // background: url("https://img3.akspic.ru/crops/5/9/7/9/4/149795/149795-shina-ves-uprazhnenie-silovye_trenirovki-sportivnoe_oborudovanie-1920x1080.jpg");
             background-size: 100%;
             background-position: center;
             background-repeat: no-repeat;
             border-radius: 15px 15px 0 0;
             width: 100%;
-            height: 60%;
+            height: 65%;
+            img {
+                width: 100%;
+                height: 100%;
+            }
         }
 
         .information {
