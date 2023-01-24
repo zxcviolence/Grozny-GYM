@@ -239,4 +239,4 @@ const Massage = () => {
   );
 };
 
-export default Massage;
+export default React.memo(Massage);

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { authSignUp } from "../../features/usersSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -19,7 +19,6 @@ import styles from "./SignUp.module.scss";
 
 const SignUp = () => {
   const error = useSelector((state) => state.users.error);
-  const token = useSelector((state) => state.users.token);
   const successfully = useSelector((state) => state.users.successfully);
   const loading = useSelector((state) => state.users.loading);
   const [login, setLogin] = useState("");
@@ -49,6 +48,12 @@ const SignUp = () => {
     e.preventDefault();
     dispatch(authSignUp({ login, password }));
   };
+
+  useEffect(() => {
+    if (successfully) {
+      window.location.href = "/login";
+    }
+  }, [successfully]);
 
   function Copyright(props) {
     return (
@@ -182,6 +187,7 @@ const SignUp = () => {
               >
                 Зарегистрироваться
               </Button>
+              {error ? <div className={styles.error}>{error}</div> : null}
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
                 label="Я ознакомлен с правилами и согласен на обработку персональных данных"
@@ -203,4 +209,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default React.memo(SignUp);
