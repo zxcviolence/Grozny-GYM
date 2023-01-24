@@ -41,4 +41,4 @@ const Simulators = () => {
   );
 };
 
-export default Simulators;
+export default React.memo(Simulators);

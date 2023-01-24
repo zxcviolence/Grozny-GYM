@@ -64,4 +64,4 @@ const SportsBar = () => {
   );
 };
 
-export default SportsBar;
+export default React.memo(SportsBar);
