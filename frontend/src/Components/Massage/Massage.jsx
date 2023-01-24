@@ -130,7 +130,7 @@ const Massage = () => {
           {massage.map((item) => {
             return (
               <div className={styles.cards} key={item._id}>
-                <div>
+                <div className={styles.photo}>
                   <img
                     src={`assets/images/massage/${item.image}`}
                     alt="massage"
