@@ -50,4 +50,4 @@ const Coach = () => {
   );
 };
 
-export default Coach;
+export default React.memo(Coach);
