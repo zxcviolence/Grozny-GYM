@@ -50,9 +50,7 @@ const Massage = () => {
     return <h1>{error.message}</h1>;
   }
 
-  if (loading) {
-    return "Loading...";
-  }
+
 
   return (
     <>

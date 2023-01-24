@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Carousel from "react-bootstrap/Carousel"
 import { fetchCoaches } from "../../features/coachSlice";
 import styles from "./Coach.module.scss";
-import CoachCard from "./CoachCard";
 const Coach = () => {
   const dispatch = useDispatch();
 
@@ -11,6 +11,7 @@ const Coach = () => {
   const loading = useSelector((state) => state.coach.loading);
 
   const [text, setText] = useState("");
+  const [modalActive, setModalActive] = useState(false);
 
   const handleInput = (e) => {
     setText(e.target.value);
@@ -24,29 +25,34 @@ const Coach = () => {
     dispatch(fetchCoaches());
   }, [dispatch]);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+
 
   if (error) {
     return <div>{error}</div>;
   }
 
   return (
-    <div className={styles.glavniyBLock}>
-      <div>
-        <input
-          className={styles.poisk}
-          onChange={handleInput}
-          placeholder="Поиск определенного тренера..."
-        />
-      </div>
-<div className={styles.mainBlock}>
+    <main>
+      <Carousel interval={9000} fade indicators={false} touch>
         {filtered.map((coach) => {
-          return  <CoachCard coach={coach} key={coach._id}/>;
+          return <Carousel.Item coach={coach} key={coach._id}>
+            <div className={styles.imgBlock}>
+              <img
+                className={styles.imgCoach}
+                src={`http://localhost:4000/assets/images/coaches/${coach.image}`}
+                alt="Фотография тренера"
+              />
+            </div>
+            <div className={styles.name}>{coach.name}</div>
+            <div className={styles.description}>{coach.description}</div>
+            <button className={styles.btn} onClick={() => setModalActive(true)}>
+              Записаться
+            </button>
+
+          </Carousel.Item>;
         })}
-      </div>
-    </div>
+      </Carousel>
+    </main>
   );
 };
 
