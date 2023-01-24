@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { authSignIn } from "../../features/usersSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -21,10 +21,11 @@ const SignIn = () => {
   const error = useSelector((state) => state.users.error);
   const loading = useSelector((state) => state.users.loading);
   const successfully = useSelector((state) => state.users.successfully);
-  const token = useSelector((state) => state.users.token);
+  const token = localStorage.getItem("token");
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
+
   const handleSetLogin = (e) => {
     setLogin(e.target.value);
   };
@@ -32,6 +33,12 @@ const SignIn = () => {
   const handleSetPassword = (e) => {
     setPassword(e.target.value);
   };
+
+  useEffect(() => {
+    if (token) {
+      window.location.href = "/";
+    }
+  }, [token]);
 
   function Copyright(props) {
     return (
@@ -57,10 +64,6 @@ const SignIn = () => {
     await e.preventDefault();
     await dispatch(authSignIn({ login, password }));
   };
-
-  if (loading) {
-    return "Loading...";
-  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -142,6 +145,21 @@ const SignIn = () => {
               >
                 Войти
               </Button>
+              <div className={styles.error}>
+                {" "}
+                {error ? (
+                  error
+                ) : (
+                  <p className={styles.successfully}>{successfully}</p>
+                )}
+              </div>
+              {loading ? (
+                <div className={styles.loader}>
+                  <div className={styles.scanner}>
+                    <span>Loading...</span>
+                  </div>
+                </div>
+              ) : null}
               <Grid container>
                 <Grid item xs>
                   <Link href="#" variant="body2">
