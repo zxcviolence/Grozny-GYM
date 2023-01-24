@@ -14,6 +14,13 @@ const userSchema = mongoose.Schema({
         type: mongoose.SchemaTypes.ObjectId,
         default: null,
       },
+    role: [{
+        type: String,
+        default: "Пользователь",
+    }],
+    image: {
+        type: String,
+    }
 })
 const User = mongoose.model("User", userSchema)
 

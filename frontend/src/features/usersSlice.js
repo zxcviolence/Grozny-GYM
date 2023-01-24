@@ -6,7 +6,6 @@ const initialState = {
   users: [],
   token: localStorage.getItem("token"),
   id: localStorage.getItem("id"),
-  login: localStorage.getItem("login"),
 };
 
 export const authSignIn = createAsyncThunk(
@@ -24,13 +23,14 @@ export const authSignIn = createAsyncThunk(
         return thunkAPI.rejectWithValue(user.error);
       }
       localStorage.setItem("token", user.token);
-      localStorage.setItem("login", user.login);
+      localStorage.setItem("id", user.id);
       return thunkAPI.fulfillWithValue(user);
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
+
 export const authSignUp = createAsyncThunk(
   "auth/signUp",
   async ({ login, password }, thunkAPI) => {
@@ -119,7 +119,7 @@ const usersSlice = createSlice({
       .addCase(fetchUser.fulfilled, (state, action) => {
         state.loading = false;
         state.error = false;
-        action.payload.map((item) => {
+      action.payload.map((item) => {
           if (item._id === localStorage.getItem("id")) {
             state.users = item;
           }

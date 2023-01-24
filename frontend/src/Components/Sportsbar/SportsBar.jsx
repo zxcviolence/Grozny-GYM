@@ -13,6 +13,8 @@ import {
   Typography,
 } from "@mui/material";
 import { Link } from "react-router-dom";
+import { separator } from "../helpers/separator";
+
 
 const SportsBar = () => {
   const dispatch = useDispatch();
@@ -52,7 +54,7 @@ const SportsBar = () => {
                     {item.name}
                   </Typography>
                   <Typography variant="body" color="#ff6f3c">
-                    Цена:{item.price}
+                    Цена: { separator(item.price)} ₽
                   </Typography>
                 </CardContent>
                 <Link to={`${item._id}`}> <Button size="small">Узнать больше</Button>   </Link>
