@@ -21,6 +21,7 @@ const CardAb = () => {
             <div className={styles.images}>
                 <img src={`/assets/images/subscription/${item.img}`}  alt=""
                 />
+
                 </div>
             <div className={styles.information}>
               <h3>{item.name}</h3>

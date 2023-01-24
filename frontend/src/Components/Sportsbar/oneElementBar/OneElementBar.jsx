@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import { fetchGoods } from "../../../features/goodsSlice";
 import styles from "./oneEl.module.scss";
 import { TbDiscount2 } from "react-icons/tb";
+
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -29,6 +30,7 @@ const OneElementBar = () => {
   };
 
   const filt = oneElement.filter((i) => i._id === id);
+
   return (
     <div className={styles.main_container}>
       <Zoom bottom>
@@ -47,6 +49,7 @@ const OneElementBar = () => {
               alt=""
             />
           </div>
+
         </div>
       </Zoom>
 
@@ -113,15 +116,16 @@ const OneElementBar = () => {
             return (
               <div key={el._id} className={styles.carousel_item}>
                 <div className={styles.carousel_image}>
-                  <img
-                    src={`/assets/images/sportsNutrition/${el.image}`}
-                    alt=""
-                  />
+
+                  <img src={`/assets/images/sportsNutrition/${el.image}`} alt="" />
+
                 </div>
                 <div className={styles.el_name}>{el.name}</div>
                 <Link to={`/sports_bar/${el._id}`}>подробнее</Link>
               </div>
+
             );
+
           })}
         </Slider>
         {/* </Carousel> */}
