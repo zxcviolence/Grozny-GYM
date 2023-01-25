@@ -43,9 +43,6 @@ const EditUser = () => {
     setPatronymic(e.target.value);
   };
 
-  useEffect(() => {
-    dispatch(fetchUser());
-  }, [dispatch]);
   const handleEdit = async (e) => {
     e.preventDefault();
     dispatch(
