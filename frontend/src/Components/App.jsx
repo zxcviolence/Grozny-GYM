@@ -10,9 +10,11 @@ import Profile from "./Profile/Profile";
 import Main from "./Main/Main";
 import Massage from "./Massage/Massage";
 import Form from "./Form/Form";
+import OneElementBar from "./Sportsbar/oneElementBar/OneElementBar";
 import Footer from "./Footer/Footer";
 import Admin from "./AdminPanel/Admin";
 import EditUser from "./AdminPanel/EditUser/EditUser";
+
 
 function App() {
   return (
@@ -32,6 +34,7 @@ function App() {
         <Route path="/registration" element={<SignUp />} />
         <Route path="/coaches" element={<Coach />} />
         <Route path="/sports_bar" element={<SportsBar />} />
+        <Route path="/sports_bar/:id" element={<OneElementBar />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/admin/edituser" element={<EditUser />} />
         <Route path="/massage" element={<Massage />} />

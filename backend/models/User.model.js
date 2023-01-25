@@ -9,11 +9,11 @@ const userSchema = mongoose.Schema({
         type: String,
        
     },
-    subscription: {
+    subscription: [{
         ref: "Subscription",
         type: mongoose.SchemaTypes.ObjectId,
         default: null,
-      },
+      }],
     role: [{
         type: String,
         default: "Пользователь",

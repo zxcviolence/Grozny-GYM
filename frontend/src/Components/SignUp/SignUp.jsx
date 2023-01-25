@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { authSignUp } from "../../features/usersSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -19,24 +19,41 @@ import styles from "./SignUp.module.scss";
 
 const SignUp = () => {
   const error = useSelector((state) => state.users.error);
-  const token = useSelector((state) => state.users.token);
   const successfully = useSelector((state) => state.users.successfully);
   const loading = useSelector((state) => state.users.loading);
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
+  const [age, setAge] = useState("");
+  const [name, setName] = useState("");
   const dispatch = useDispatch();
-
+  const [gmailError, setGmailError] = useState()
   const handleSetLogin = (e) => {
     setLogin(e.target.value);
+  };
+  const handleSetAge = (e) => {
+    setAge(e.target.value);
+  };
+  const handleSetName = (e) => {
+    setName(e.target.value);
   };
   const handleSetPassword = (e) => {
     setPassword(e.target.value);
   };
 
   const handleRegister = async (e) => {
-    await e.preventDefault();
-    await dispatch(authSignUp({ login, password }));
+    if (!login.endsWith('@gmail.com')) {
+      return setGmailError('Некорректный адрес почты')
+    }
+    setGmailError(null)
+    e.preventDefault();
+    dispatch(authSignUp({ login, password }));
   };
+
+  useEffect(() => {
+    if (successfully) {
+      window.location.href = "/login";
+    }
+  }, [successfully]);
 
   function Copyright(props) {
     return (
@@ -107,9 +124,9 @@ const SignUp = () => {
                 margin="normal"
                 fullWidth
                 id="Login"
-                label="Login"
-                name="Login"
-                type="text"
+                label="Почта"
+                name="email"
+                type="email"
                 autoComplete="Login"
                 onChange={handleSetLogin}
                 value={login}
@@ -126,6 +143,42 @@ const SignUp = () => {
                 onChange={handleSetPassword}
                 value={password}
               />
+              <TextField
+                required
+                fullWidth
+                margin="normal"
+                name="ФИО"
+                label="ФИО"
+                type="text"
+                id="text"
+                onChange={handleSetName}
+                value={name}
+              />
+              <TextField
+                required
+                fullWidth
+                margin="normal"
+                name="Возраст"
+                label="Возраст"
+
+                type="number"
+                id="date"
+                onChange={handleSetAge}
+                value={age}
+              />
+              <TextField
+                required
+                fullWidth
+                margin="normal"
+                name="ФИО"
+                label="ФИО"
+                type="text"
+                id="text"
+                autoComplete="current-password"
+                onChange={handleSetPassword}
+                value={password}
+              />
+              {gmailError && <div className={styles.gmError}> {gmailError} </div>}
               <Button
                 type="submit"
                 fullWidth
@@ -134,6 +187,7 @@ const SignUp = () => {
               >
                 Зарегистрироваться
               </Button>
+              {error ? <div className={styles.error}>{error}</div> : null}
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
                 label="Я ознакомлен с правилами и согласен на обработку персональных данных"
@@ -142,7 +196,7 @@ const SignUp = () => {
                 <Grid item xs></Grid>
                 <Grid item>
                   <Link to="/login" element={<SignIn />} variant="body2">
-                    {"Уже есть аккаунт? Войти"}
+                  {"Уже есть аккаунт? Войти"}
                   </Link>
                 </Grid>
               </Grid>
@@ -155,4 +209,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default React.memo(SignUp);

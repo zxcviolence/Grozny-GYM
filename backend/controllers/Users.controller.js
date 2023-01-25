@@ -119,6 +119,7 @@ module.exports.usersController = {
       res.status(400).json("Registration Error" + error);
     }
   },
+
   getAssemblyCart: async (req, res) => {
     try {
       const { userId } = req.params;
@@ -130,6 +131,18 @@ module.exports.usersController = {
       res.status(400).json(error.message);
     }
   },
+  //ДОБАВЛЕНИЕ АОНЕМЕНТА
+  addToSubscription: async (req, res) => {
+    try {
+      const addToSubs = await User.findByIdAndUpdate(req.params.id, {
+       $push :{subscription: req.body.subscription} 
+      }, {new: true})
+      res.json(addToSubs)
+    } catch (error) {
+      res.status(400).json(error.message);
+    }
+  },
+
   addToCartAssembly: async (req, res) => {
     try {
       const { userId } = req.params;

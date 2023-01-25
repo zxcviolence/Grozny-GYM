@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   coaches: [],
@@ -23,7 +23,8 @@ export const fetchCoaches = createAsyncThunk(
     }
   }
 );
-
+export const select = createAction("select")
+//
 const coachesSlice = createSlice({
   name: "coaches",
   initialState,

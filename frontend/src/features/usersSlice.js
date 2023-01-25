@@ -6,6 +6,7 @@ const initialState = {
   users: [],
   token: localStorage.getItem("token"),
   id: localStorage.getItem("id"),
+  login: localStorage.getItem("login"),
 };
 
 export const authSignIn = createAsyncThunk(
@@ -24,6 +25,8 @@ export const authSignIn = createAsyncThunk(
       }
       localStorage.setItem("token", user.token);
       localStorage.setItem("id", user.id);
+      localStorage.setItem("login", user.login);
+
       return thunkAPI.fulfillWithValue(user);
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -94,7 +97,7 @@ export const fetchUser = createAsyncThunk("fetch/user", async (_, thunkAPI) => {
 const usersSlice = createSlice({
   name: "users",
   initialState,
-  reducers:{},
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(authSignIn.pending, (state) => {
@@ -126,7 +129,6 @@ const usersSlice = createSlice({
         state.error = false;
         state.successfully = action.payload;
       })
-// EDIT USER
       .addCase(editUser.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -139,6 +141,7 @@ const usersSlice = createSlice({
         state.loading = null;
         state.error = false;
       })
+
       //FETCH USERS
       .addCase(fetchUser.pending, (state) => {
         state.loading = true;
@@ -151,14 +154,13 @@ const usersSlice = createSlice({
       .addCase(fetchUser.fulfilled, (state, action) => {
         state.loading = false;
         state.error = false;
-      action.payload.map((item) => {
+        action.payload.map((item) => {
           if (item._id === localStorage.getItem("id")) {
             state.users = item;
           }
           return state.users;
         });
-      })
-      
+      });
   },
 });
 

@@ -12,7 +12,10 @@ import {
   CardMedia,
   Typography,
 } from "@mui/material";
+import { Link } from "react-router-dom";
 import { separator } from "../helpers/separator";
+import RubberBand from 'react-reveal/RubberBand';
+
 
 const SportsBar = () => {
   const dispatch = useDispatch();
@@ -25,13 +28,14 @@ const SportsBar = () => {
 
   return (
     <div className={styles.main_unit}>
-      <Flip bottom>
+      <RubberBand >
         <h1 className={styles.h1}>Спорт Бар</h1>
-      </Flip>
+      </RubberBand>
       <div className={styles.main_content}>
         {goods.map((item) => {
           return (
             <Fade key={item._id} bottom cascade>
+              
               <Card
                 className={styles.card_item}
                 sx={{ maxWidth: 350, height: "95%", minWidth: 350 }}
@@ -54,8 +58,9 @@ const SportsBar = () => {
                     Цена: { separator(item.price)} ₽
                   </Typography>
                 </CardContent>
-                  <Button size="small">Узнать больше</Button>
+                <Link to={`${item._id}`}> <Button size="small">Узнать больше</Button>   </Link>
               </Card>
+           
             </Fade>
           );
         })}
@@ -64,4 +69,4 @@ const SportsBar = () => {
   );
 };
 
-export default SportsBar;
+export default React.memo(SportsBar);
