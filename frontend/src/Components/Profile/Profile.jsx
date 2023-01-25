@@ -14,7 +14,7 @@ const Profile = () => {
     <div className={styles.main}>
       <div className={styles.title}>
         <h1>Профиль</h1>
-        <button onClick={(e) => window.location.href = '/profile/edituser'} className={styles.editButton}>Редактировать профиль</button>
+        <button onClick={() => window.location.href = '/profile/edituser'} className={styles.editButton}>Редактировать профиль</button>
       </div>
       <div className={styles.club}>
         <p>клуб</p>

@@ -113,20 +113,26 @@ const EditUser = () => {
                 </div>
               </div>
               <div className={styles.divider}></div>
-              {users.role[0] === 'Администратор' ? <div className={styles.formGroup}>
-                <label>Группа:</label>
-                <div>
-                  <input
-                    className={styles.formControl}
-                    type="text"
-                    onChange={handleSetRole}
-                    value={role}
-                    maxLength="40"
-                    placeholder={users.role}
-                    name="editrole"
-                  />
-                </div>
-              </div> : null}
+              {users.role.map((item) => {
+                if (item === "Администратор") {
+                  return (
+                    <div className={styles.formGroup}>
+                      <label>Группа:</label>
+                      <div>
+                        <input
+                          className={styles.formControl}
+                          type="text"
+                          onChange={handleSetRole}
+                          value={role}
+                          maxLength="40"
+                          placeholder={users.role}
+                          name="editrole"
+                        />
+                      </div>
+                    </div>
+                  );
+                }
+              })}
               {/* <div className={styles.formGroup}>
                 <label>
                   Забанен:{" "}
