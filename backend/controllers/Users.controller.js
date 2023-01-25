@@ -22,14 +22,14 @@ module.exports.usersController = {
         Number(process.env.BCRYPT_ROUNDS)
       );
 
-      const user2 = await User.find({ id });
+      const user2 = await User.findById( id );
 
       const user = await User.findByIdAndUpdate(id, {
         login: req.body.login.length <= 0 ? user2.login : req.body.login,
         password: hashPassword.length <= 0 ? user2.password : hashPassword,
-        image: req.body.image.length <= 0 ? user2.image : req.body.image,
         role: req.body.role.length <= 0 ? user2.role : req.body.role,
         banned: req.body.banned.length <= 0 ? user2.banned : req.body.banned,
+        image: req.body.image.length <= 0 ? user2.image : req.body.image,
         name: req.body.name.length <= 0 ? user2.name : req.body.name,
         surname:
           req.body.surname.length <= 0 ? user2.surname : req.body.surname,
@@ -136,6 +136,7 @@ module.exports.usersController = {
   //ДОБАВЛЕНИЕ АОНЕМЕНТА
   addToSubscription: async (req, res) => {
     try {
+
       const user = await User.findById(req.params.id).populate("subscription");
       const subs = await Subscription.findById(req.params.subId);
       console.log(subs._id, "subs._id");
@@ -158,10 +159,12 @@ module.exports.usersController = {
         {
           $push: { subscription: req.params.subId },
           cash: cash - price,
+
         },
         { new: true }
       );
       res.json(addToSubs);
+
     } catch (error) {
       res.status(400).json(error.message);
     }
@@ -173,6 +176,7 @@ module.exports.usersController = {
       const newBalance = user.cash + req.body.cash;
       await User.findByIdAndUpdate(req.params.id, { cash: newBalance });
       res.json("кошелек пополнен");
+
     } catch (error) {
       res.status(400).json(error.message);
     }

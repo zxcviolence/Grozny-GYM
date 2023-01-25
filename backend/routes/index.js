@@ -8,6 +8,7 @@ router.use("/massage", require("./Massage.route"));
 router.use("/coaches", require("./Coach.route"));
 router.use("/simulators", require("./Simulators.route"));
 router.use("/admin/form", require("./Form.route"));
+router.use("/admin/coachform", require("./CoachForm.route"));
 router.use("/", require("./Subscription.route"))
 
 

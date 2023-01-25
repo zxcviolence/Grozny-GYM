@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { createRef, useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { editUser } from "../../../features/usersSlice";
@@ -7,6 +7,8 @@ import styles from "./EditUser.module.scss";
 
 const EditUser = () => {
   const users = useSelector((state) => state.users.users);
+  const id = users._id;
+
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [patronymic, setPatronymic] = useState("");
@@ -15,7 +17,7 @@ const EditUser = () => {
   const [banned, setBanned] = useState(false);
   const [role, setRole] = useState("");
   const [image, setImage] = useState("");
-
+  const upload = createRef("uploadForm");
   const dispatch = useDispatch();
 
   const handleSetLogin = (e) => {
@@ -27,10 +29,10 @@ const EditUser = () => {
   const handleSetRole = (e) => {
     setRole(e.target.value);
   };
-  const handleSetBanned = (e) => {
-    console.log(e.target.value);
-    setBanned(!banned);
-  };
+  // const handleSetBanned = (e) => {
+  //   console.log(e.target.value);
+  //   setBanned(!banned);
+  // };
   const handleSetName = (e) => {
     setName(e.target.value);
   };
@@ -40,19 +42,12 @@ const EditUser = () => {
   const handleSetPatronymic = (e) => {
     setPatronymic(e.target.value);
   };
-  const handleSetImage = (e) => {
-    setImage(e.target.value);
-  };
-  useEffect(() => {
-    if (users.banned === true) {
-      setBanned(true);
-    }
-  });
+
   const handleEdit = async (e) => {
     e.preventDefault();
-    await dispatch(
+    dispatch(
       editUser({
-        id: users._id,
+        id,
         name,
         surname,
         patronymic,
@@ -60,11 +55,11 @@ const EditUser = () => {
         password,
         banned,
         role,
-        image,
+        image: image.split("").splice(12).join(""),
       })
     );
-    window.location.reload();
   };
+
   return (
     <div className={styles.main}>
       <Admin />
@@ -189,9 +184,28 @@ const EditUser = () => {
                 </div>
               </div>
               <div className={styles.divider}></div>
-    
-              <button className={styles.edit} type="submit">Изменить</button>
-              
+
+              <form
+                ref={upload}
+                id="uploadForm"
+                action={`http://localhost:4000/upload/${users._id}`}
+                method="post"
+                target="_blank"
+                encType="multipart/form-data"
+              >
+                <input
+                  value={image}
+                  onChange={(e) => {
+                    setImage(e.target.value);
+                  }}
+                  type="file"
+                  name="sampleFile"
+                />
+                <input type="submit" value="Загрузить" />
+              </form>
+              <button className={styles.edit} type="submit">
+                Изменить
+              </button>
             </form>
           </div>
         </div>
