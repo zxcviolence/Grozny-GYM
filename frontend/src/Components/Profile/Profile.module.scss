@@ -5,8 +5,20 @@
   flex-direction: column;
 
   .title {
+    display: flex;
     margin: 5% 0;
     font-size: 30px;
+    .editButton {
+      margin-left: 45%;
+      border: 1px solid black;
+      padding: 1%;
+      background-color: transparent;
+      transition: 0.3s;
+      &:hover {
+        background-color: #333333;
+        color: white;
+      }
+    }
   }
 
   .club {
