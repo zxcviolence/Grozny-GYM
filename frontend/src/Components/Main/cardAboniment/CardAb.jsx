@@ -6,7 +6,9 @@ import styles from "./cardAB.module.scss";
 const CardAb = () => {
   const dispatch = useDispatch();
 
-  const subscriptions = useSelector((state) => state.SubscriptionSlice.Subscription);
+  const subscriptions = useSelector(
+    (state) => state.SubscriptionSlice.Subscription
+  );
 
   useEffect(() => {
     dispatch(fetchSubscription());
@@ -14,15 +16,12 @@ const CardAb = () => {
 
   return (
     <div className={styles.card_block}>
-      {/* 1 */}
       {subscriptions.map((item) => {
         return (
           <div className={styles.card_div}>
             <div className={styles.images}>
-                <img src={`/assets/images/subscription/${item.img}`}  alt=""
-                />
-
-                </div>
+              <img src={`/assets/images/subscription/${item.img}`} alt="" />
+            </div>
             <div className={styles.information}>
               <h3>{item.name}</h3>
               <span>{item.price} руб</span>
@@ -30,8 +29,6 @@ const CardAb = () => {
           </div>
         );
       })}
-
-      {/* 2 */}
     </div>
   );
 };

@@ -1,4 +1,6 @@
 const User = require("../models/User.model");
+const Subscription = require("../models/Subscription.model");
+
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { validationResult } = require("express-validator");
@@ -124,7 +126,7 @@ module.exports.usersController = {
     try {
       const { userId } = req.params;
 
-      const user = await User.findById(userId);
+      const user = await User.findById(userId).populate("subscription");
 
       return res.json(user);
     } catch (error) {
@@ -134,10 +136,43 @@ module.exports.usersController = {
   //ДОБАВЛЕНИЕ АОНЕМЕНТА
   addToSubscription: async (req, res) => {
     try {
-      const addToSubs = await User.findByIdAndUpdate(req.params.id, {
-       $push :{subscription: req.body.subscription} 
-      }, {new: true})
-      res.json(addToSubs)
+      const user = await User.findById(req.params.id).populate("subscription");
+      const subs = await Subscription.findById(req.params.subId);
+      console.log(subs._id, "subs._id");
+      console.log(user.subscription[0]._id, "user.subscription._id ");
+
+      const cash = user.cash;
+      const price = subs.price;
+
+      if (user.subscription.filter((i) => i._id) === subs._id) {
+        console.log(i);
+        return res.json("sac del");
+      }
+      if (cash < price) {
+        return res.json("недостаточно средств");
+      }
+
+      // const cash = await user.cash - subscription.price;
+      const addToSubs = await User.findByIdAndUpdate(
+        req.params.id,
+        {
+          $push: { subscription: req.params.subId },
+          cash: cash - price,
+        },
+        { new: true }
+      );
+      res.json(addToSubs);
+    } catch (error) {
+      res.status(400).json(error.message);
+    }
+  },
+  //ПОПОЛНЕНИЕ СРЕДСТВ
+  upBalance: async (req, res) => {
+    try {
+      const user = await User.findById(req.params.id);
+      const newBalance = user.cash + req.body.cash;
+      await User.findByIdAndUpdate(req.params.id, { cash: newBalance });
+      res.json("кошелек пополнен");
     } catch (error) {
       res.status(400).json(error.message);
     }
