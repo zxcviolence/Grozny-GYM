@@ -5,6 +5,7 @@ const router = Router();
 const authMiddleware = require("../middleware/auth.middleware");
 
 router.get("/", authMiddleware, usersController.getUsers);
+router.patch("/edituser/:id", usersController.editUser);
 router.post(
   "/registration",
   [

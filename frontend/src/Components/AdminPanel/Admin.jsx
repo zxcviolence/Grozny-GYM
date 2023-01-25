@@ -17,7 +17,7 @@ const Admin = () => {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className={styles.main}>
       <div className={styles.sidebar}>
       <div className={styles.categoryContent}>
         <div>

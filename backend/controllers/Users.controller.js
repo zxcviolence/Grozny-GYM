@@ -11,7 +11,36 @@ module.exports.usersController = {
       return res.json({ error: error.message });
     }
   },
+  editUser: async (req, res) => {
+    const { id } = req.params;
 
+    try {
+      const hashPassword = bcrypt.hashSync(
+        req.body.password,
+        Number(process.env.BCRYPT_ROUNDS)
+      );
+
+      const user2 = await User.find({ id });
+
+      const user = await User.findByIdAndUpdate(id, {
+        login: req.body.login.length <= 0 ? user2.login : req.body.login,
+        password: hashPassword.length <= 0 ? user2.password : hashPassword,
+        image: req.body.image.length <= 0 ? user2.image : req.body.image,
+        role: req.body.role.length <= 0 ? user2.role : req.body.role,
+        banned: req.body.banned.length <= 0 ? user2.banned : req.body.banned,
+        name: req.body.name.length <= 0 ? user2.name : req.body.name,
+        surname:
+          req.body.surname.length <= 0 ? user2.surname : req.body.surname,
+        patronymic:
+          req.body.patronymic.length <= 0
+            ? user2.patronymic
+            : req.body.patronymic,
+      });
+      return res.json(user);
+    } catch (error) {
+      res.json({ error: error.message });
+    }
+  },
   login: async (req, res) => {
     try {
       const { login, password } = req.body;

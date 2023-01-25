@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 const initialState = {
   loading: false,
-  error: false,
+  error: [],
   successfully: null,
   users: [],
   token: localStorage.getItem("token"),
@@ -27,6 +27,27 @@ export const authSignIn = createAsyncThunk(
       localStorage.setItem("id", user.id);
       localStorage.setItem("login", user.login);
 
+      return thunkAPI.fulfillWithValue(user);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const editUser = createAsyncThunk(
+  "edit/user",
+  async ({ id, login, password, name, surname, patronymic, banned, image, role}, thunkAPI) => {
+    try {
+      const res = await fetch(`/users/edituser/${id}`, {
+        method: "PATCH",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify({ login, password, name, surname, patronymic, banned, image, role}),
+      });
+      const user = await res.json();
+
+      if (user.error) {
+        return thunkAPI.rejectWithValue(user.error);
+      }
       return thunkAPI.fulfillWithValue(user);
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -81,7 +102,7 @@ const usersSlice = createSlice({
     builder
       .addCase(authSignIn.pending, (state) => {
         state.loading = true;
-        state.error = false;
+        state.error = null;
       })
       .addCase(authSignIn.rejected, (state, action) => {
         state.loading = false;
@@ -89,13 +110,13 @@ const usersSlice = createSlice({
       })
       .addCase(authSignIn.fulfilled, (state, action) => {
         state.loading = false;
-        state.error = false;
+        state.error = null;
       })
 
       // REGISTER
       .addCase(authSignUp.pending, (state) => {
         state.loading = true;
-        state.error = false;
+        state.error = null;
         state.successfully = null;
       })
       .addCase(authSignUp.rejected, (state, action) => {
@@ -107,6 +128,18 @@ const usersSlice = createSlice({
         state.loading = false;
         state.error = false;
         state.successfully = action.payload;
+      })
+      .addCase(editUser.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(editUser.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(editUser.fulfilled, (state, action) => {
+        state.loading = null;
+        state.error = false;
       })
 
       //FETCH USERS
