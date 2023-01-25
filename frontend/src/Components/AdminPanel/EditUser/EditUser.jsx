@@ -9,7 +9,6 @@ const EditUser = () => {
   const users = useSelector((state) => state.users.users);
   const id = users._id;
 
-  console.log(id, "usID");
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [patronymic, setPatronymic] = useState("");
