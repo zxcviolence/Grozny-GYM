@@ -1,10 +1,6 @@
 * {
   box-sizing: border-box;
 }
-.main {
-  display: table-cell;
-  vertical-align: top;
-}
 .sidebar {
   background-color: #fff;
   color: #000;
@@ -37,6 +33,8 @@
     float: left;
     margin-right: 5px;
     object-fit: cover;
+
+    border-radius: 60%;
   }
 }
 .navigationWrapper {
@@ -47,7 +45,7 @@
   flex-direction: column;
   gap: 30px;
   margin: 0;
-  height: 600px;
+width: 300px;
   padding: 10px 0;
   list-style: none;
   li {

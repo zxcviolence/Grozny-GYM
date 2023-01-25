@@ -12,12 +12,17 @@ import Massage from "./Massage/Massage";
 import Form from "./Form/Form";
 import Footer from "./Footer/Footer";
 import Admin from "./AdminPanel/Admin";
-import EditUser from "./AdminPanel/EditUser";
+import EditUser from "./AdminPanel/EditUser/EditUser";
 
 function App() {
   return (
     <div className="App">
-    { window.location.pathname === '/admin/' || window.location.pathname === '/admin/edituser/' || window.location.pathname === '/admin' || window.location.pathname === '/admin/edituser' ? null : <Header/>}
+      {window.location.pathname === "/admin/" ||
+      window.location.pathname === "/admin/edituser/" ||
+      window.location.pathname === "/admin" ||
+      window.location.pathname === "/admin/edituser" ? null : (
+        <Header />
+      )}
 
       <Routes>
         <Route path="/admin" element={<Admin />} />
@@ -32,7 +37,7 @@ function App() {
         <Route path="/massage" element={<Massage />} />
         <Route path="/admin/form" element={<Form />} />
       </Routes>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

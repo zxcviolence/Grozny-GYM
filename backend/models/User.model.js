@@ -3,11 +3,11 @@ const mongoose = require('mongoose');
 const userSchema = mongoose.Schema({
     login: {
         type: String,
-        require: true,
+      
     },
     password: {
         type: String,
-        require: true,
+       
     },
     subscription: {
         ref: "Subscription",
@@ -20,7 +20,20 @@ const userSchema = mongoose.Schema({
     }],
     image: {
         type: String,
-    }
+    },
+    name: {
+        type: String,
+    },
+    surname: {
+        type: String,
+    },
+    patronymic: {
+        type: String,
+    },
+    banned: {
+        type: Boolean,
+        default: false,
+    },
 })
 const User = mongoose.model("User", userSchema)
 
