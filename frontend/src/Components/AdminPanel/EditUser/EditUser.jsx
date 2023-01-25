@@ -1,7 +1,7 @@
 import React, { createRef, useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { editUser } from "../../../features/usersSlice";
+import { editUser, fetchUser } from "../../../features/usersSlice";
 import Admin from "../Admin";
 import styles from "./EditUser.module.scss";
 
@@ -43,6 +43,9 @@ const EditUser = () => {
     setPatronymic(e.target.value);
   };
 
+  useEffect(() => {
+    dispatch(fetchUser());
+  }, [dispatch]);
   const handleEdit = async (e) => {
     e.preventDefault();
     dispatch(
@@ -113,10 +116,7 @@ const EditUser = () => {
                 </div>
               </div>
               <div className={styles.divider}></div>
-              {users.role.map((item) => {
-                if (item === "Администратор") {
-                  return (
-                    <div className={styles.formGroup}>
+              {users.role === 'Администратор' ? <div className={styles.formGroup}>
                       <label>Группа:</label>
                       <div>
                         <input
@@ -129,10 +129,7 @@ const EditUser = () => {
                           name="editrole"
                         />
                       </div>
-                    </div>
-                  );
-                }
-              })}
+                    </div> : null}
               {/* <div className={styles.formGroup}>
                 <label>
                   Забанен:{" "}
