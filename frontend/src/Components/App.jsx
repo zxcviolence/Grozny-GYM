@@ -20,9 +20,9 @@ function App() {
   return (
     <div className="App">
       {window.location.pathname === "/admin/" ||
-      window.location.pathname === "/admin/edituser/" ||
+      window.location.pathname === "/profile/edituser/" ||
       window.location.pathname === "/admin" ||
-      window.location.pathname === "/admin/edituser" ? null : (
+      window.location.pathname === "/profile/edituser" ? null : (
         <Header />
       )}
 
@@ -36,7 +36,7 @@ function App() {
         <Route path="/sports_bar" element={<SportsBar />} />
         <Route path="/sports_bar/:id" element={<OneElementBar />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/admin/edituser" element={<EditUser />} />
+        <Route path="/profile/edituser" element={<EditUser />} />
         <Route path="/massage" element={<Massage />} />
         <Route path="/admin/form" element={<Form />} />
         <Route path="/admin/coachform" element={<CoachForm />} />

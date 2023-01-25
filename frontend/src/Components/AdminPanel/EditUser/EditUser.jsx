@@ -113,7 +113,7 @@ const EditUser = () => {
                 </div>
               </div>
               <div className={styles.divider}></div>
-              <div className={styles.formGroup}>
+              {users.role[0] === 'Администратор' ? <div className={styles.formGroup}>
                 <label>Группа:</label>
                 <div>
                   <input
@@ -126,7 +126,7 @@ const EditUser = () => {
                     name="editrole"
                   />
                 </div>
-              </div>
+              </div> : null}
               {/* <div className={styles.formGroup}>
                 <label>
                   Забанен:{" "}

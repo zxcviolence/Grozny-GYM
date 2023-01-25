@@ -11,8 +11,9 @@ header {
     margin-left: 5vw;
 
     .logoImage {
-      width: 10vw;
-      height: 15vh;
+width: 180px;
+
+
     }
 
     .logoText {
@@ -43,7 +44,9 @@ header {
     }
   }
 }
-
+.navigationButton {
+  font-size: 25px;
+}
 .offcanvas {
   background-color: #fffaf0;
   .offcanvas_header {

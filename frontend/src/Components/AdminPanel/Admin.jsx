@@ -42,7 +42,7 @@ const Admin = () => {
             </a>
           </li>
           <li>
-            <NavLink to="/admin/edituser">
+            <NavLink to="/profile/edituser">
               <BsFillGearFill
                 className={styles.fafaUser}
                 style={{ color: "black" }}
@@ -55,7 +55,12 @@ const Admin = () => {
               className={styles.fafaUser}
               style={{ color: "red" }}
             />
-            <span onClick={() => localStorage.clear()}>Выход</span>
+            <span href="/" onClick={() => {
+              return (
+                localStorage.clear(),
+                window.location.href = '/'
+              )
+            }}>Выход</span>
           </li>
         </ul>
       </div>
