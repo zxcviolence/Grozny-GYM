@@ -34,6 +34,10 @@ const userSchema = mongoose.Schema({
         type: Boolean,
         default: false,
     },
+    cash: {
+        type: Number,
+        default: 0,
+    }
 })
 const User = mongoose.model("User", userSchema)
 
