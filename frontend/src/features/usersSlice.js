@@ -38,6 +38,7 @@ export const editUser = createAsyncThunk(
   "edit/user",
   async ({ id, login, password, name, surname, patronymic, banned, image, role}, thunkAPI) => {
     try {
+      console.log(id, 'id', login, password, name, surname, patronymic, banned, image, role, 'act');
       const res = await fetch(`/users/edituser/${id}`, {
         method: "PATCH",
         headers: { "Content-type": "application/json" },
