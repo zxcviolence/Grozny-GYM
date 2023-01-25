@@ -10,11 +10,11 @@ import Profile from "./Profile/Profile";
 import Main from "./Main/Main";
 import Massage from "./Massage/Massage";
 import Form from "./Form/Form";
+import CoachForm from "./Form/CoachForm";
 import OneElementBar from "./Sportsbar/oneElementBar/OneElementBar";
 import Footer from "./Footer/Footer";
 import Admin from "./AdminPanel/Admin";
 import EditUser from "./AdminPanel/EditUser/EditUser";
-
 
 function App() {
   return (
@@ -39,6 +39,7 @@ function App() {
         <Route path="/admin/edituser" element={<EditUser />} />
         <Route path="/massage" element={<Massage />} />
         <Route path="/admin/form" element={<Form />} />
+        <Route path="/admin/coachform" element={<CoachForm />} />
       </Routes>
       <Footer />
     </div>
