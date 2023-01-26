@@ -53,7 +53,6 @@ const SignIn = () => {
           Grozny Gym
         </Link>{" "}
         {new Date().getFullYear()}
-        {"."}
       </Typography>
     );
   }
@@ -146,7 +145,6 @@ const SignIn = () => {
                 Войти
               </Button>
               <div className={styles.error}>
-                {" "}
                 {error ? (
                   error
                 ) : (

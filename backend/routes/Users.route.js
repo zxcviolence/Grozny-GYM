@@ -12,8 +12,8 @@ router.post(
     check("login", "Имя пользователя не может быть пустым").notEmpty(),
     check(
       "password",
-      "Пароль должен быть больше 4 или меньше 10 символов"
-    ).isLength({ min: 4, max: 10 }),
+      "Пароль должен быть больше 4 символов"
+    ).isLength({ min: 4, max: 20 }),
   ],
   usersController.register
 );
@@ -23,8 +23,8 @@ router.post(
     check("login", "Имя пользователя не может быть пустым").notEmpty(),
     check(
       "password",
-      "Пароль должен быть больше 4 или меньше 10 символов"
-    ).isLength({ min: 4, max: 10 }),
+      "Пароль должен быть больше 4 символов"
+    ).isLength({ min: 4, max: 20 }),
   ],
   usersController.login
 );
