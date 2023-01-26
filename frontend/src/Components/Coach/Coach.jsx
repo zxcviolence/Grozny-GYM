@@ -14,7 +14,7 @@ const Coach = () => {
   const error = useSelector((state) => state.coach.error);
   const loading = useSelector((state) => state.coach.loading);
   const [name, setName] = useState("");
-  const [phone, setphone] = useState("");
+  const [phone, setphone] = useState("+7");
   const [weight, setWeight] = useState("");
   const [isSport, setIsSport] = useState("");
   const [select, setSelect] = useState({
@@ -29,6 +29,10 @@ const Coach = () => {
     e.preventDefault();
     dispatch(postForm({ name, phone, weight, isSport }));
   };
+
+  if (loading) {
+    return <div className={styles.loader}>Loading</div>;
+  }
 
   return (
     <main>

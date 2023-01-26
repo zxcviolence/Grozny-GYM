@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getForm } from "../../features/coachformSlice";
+import { getForm, deleteForm } from "../../features/coachformSlice";
 import styles from "./CoachForm.module.scss";
 
 const Form = () => {
@@ -10,6 +10,10 @@ const Form = () => {
 
   const dispatch = useDispatch();
 
+  const handleRemove = (id) => {
+    dispatch(deleteForm({ id }));
+  };
+
   useEffect(() => {
     dispatch(getForm());
   }, [dispatch]);
@@ -18,13 +22,10 @@ const Form = () => {
     return <h1>{error.message}</h1>;
   }
 
-  if (loading) {
-    return "Loading...";
-  }
-
   return (
     <>
       <div className={styles.main}>
+      {loading && <div className={styles.loader}>Loading</div>}
         {form.map((item) => {
           return (
             <div className={styles.forms} key={item._id}>
@@ -33,6 +34,9 @@ const Form = () => {
               <div>Телефон: {item.phone}</div>
               <div>Вес: {item.weight} кг</div>
               <div>Занимался ли спрортом прежде: {item.isSport}</div>
+              <button onClick={() => handleRemove(item._id)}>
+                Удалить заявку
+              </button>
             </div>
           );
         })}

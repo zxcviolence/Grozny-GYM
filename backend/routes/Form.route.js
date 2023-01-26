@@ -4,5 +4,6 @@ const router = Router();
 
 router.get("/", formController.getForm);
 router.post("/", formController.postForm);
+router.delete("/:id", formController.removeForm);
 
 module.exports = router;

@@ -35,6 +35,12 @@ const massageSlice = createSlice({
       })
       .addCase(getMassage.pending, (state, action) => {
         state.error = null;
+        state.massage = state.massage.map((item) => {
+          if (item._id === action.payload._id) {
+            item.loading = true;
+          }
+          return item;
+        });
         state.loading = true;
       })
       .addCase(getMassage.fulfilled, (state, action) => {
