@@ -23,28 +23,25 @@ const SignUp = () => {
   const loading = useSelector((state) => state.users.loading);
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
-  const [age, setAge] = useState("");
-  const [name, setName] = useState("");
+  // const [age, setAge] = useState("");
+  // const [name, setName] = useState("");
   const dispatch = useDispatch();
-  const [gmailError, setGmailError] = useState()
+  // const [gmailError, setGmailError] = useState()
+
   const handleSetLogin = (e) => {
     setLogin(e.target.value);
   };
-  const handleSetAge = (e) => {
-    setAge(e.target.value);
-  };
-  const handleSetName = (e) => {
-    setName(e.target.value);
-  };
+  // const handleSetAge = (e) => {
+  //   setAge(e.target.value);
+  // };
+  // const handleSetName = (e) => {
+  //   setName(e.target.value);
+  // };
   const handleSetPassword = (e) => {
     setPassword(e.target.value);
   };
 
   const handleRegister = async (e) => {
-    if (!login.endsWith('@gmail.com')) {
-      return setGmailError('Некорректный адрес почты')
-    }
-    setGmailError(null)
     e.preventDefault();
     dispatch(authSignUp({ login, password }));
   };
@@ -124,9 +121,9 @@ const SignUp = () => {
                 margin="normal"
                 fullWidth
                 id="Login"
-                label="Почта"
-                name="email"
-                type="email"
+                label="Логин"
+                name="login"
+                type="text"
                 autoComplete="Login"
                 onChange={handleSetLogin}
                 value={login}
@@ -144,7 +141,7 @@ const SignUp = () => {
                 value={password}
               />
 
-              {gmailError && <div className={styles.gmError}> {gmailError} </div>}
+              {/* {gmailError && <div className={styles.gmError}> {gmailError} </div>} */}
               <Button
                 type="submit"
                 fullWidth
@@ -162,7 +159,7 @@ const SignUp = () => {
                 <Grid item xs></Grid>
                 <Grid item>
                   <Link to="/login" element={<SignIn />} variant="body2">
-                  {"Уже есть аккаунт? Войти"}
+                    {"Уже есть аккаунт? Войти"}
                   </Link>
                 </Grid>
               </Grid>
