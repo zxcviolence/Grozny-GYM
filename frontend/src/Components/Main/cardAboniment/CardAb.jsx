@@ -18,7 +18,7 @@ const CardAb = () => {
     <div className={styles.card_block}>
       {subscriptions.map((item) => {
         return (
-          <div className={styles.card_div}>
+          <div key={item._id} className={styles.card_div}>
             <div className={styles.images}>
               <img src={`/assets/images/subscription/${item.img}`} alt="" />
             </div>

@@ -173,7 +173,7 @@ module.exports.usersController = {
   upBalance: async (req, res) => {
     try {
       const user = await User.findById(req.params.id);
-      const newBalance = user.cash + req.body.cash;
+      const newBalance = Number(user.cash) + Number(req.body.cash)
       await User.findByIdAndUpdate(req.params.id, { cash: newBalance });
       res.json("кошелек пополнен");
 
