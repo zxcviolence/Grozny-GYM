@@ -200,6 +200,17 @@ width: 180px;
 
 
 .payBTN{
-  margin-top: 2%;
+  margin: 3%;
+  padding: 2%;
+  border-radius: 5px;
+  border: none;
+  background: #787575;
+}
+
+.payBTN:hover{
+  background: rgb(75, 160, 75);  
+  color: #fff;
+  opacity: 2;
+  transition: all 0.3s
 }
 
