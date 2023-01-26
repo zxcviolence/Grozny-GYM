@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { FaUserAlt } from "react-icons/fa";
 import { AiOutlinePoweroff } from "react-icons/ai";
+import {IoIosFitness} from 'react-icons/io'
 import { BsFillGearFill } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUser } from "../../features/usersSlice";
@@ -50,6 +51,15 @@ const Admin = () => {
               <span>Настройки профиля</span>
             </NavLink>
           </li>
+          {users.role === 'Администратор' ? <li>
+            <NavLink to="/admin/add/simulators">
+              <IoIosFitness
+                className={styles.fafaUser}
+                style={{ color: "black" }}
+              />
+              <span>Добавить тренажёры</span>
+            </NavLink>
+          </li> : null}
           <li>
             <AiOutlinePoweroff
               className={styles.fafaUser}

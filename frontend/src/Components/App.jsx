@@ -15,6 +15,7 @@ import OneElementBar from "./Sportsbar/oneElementBar/OneElementBar";
 import Footer from "./Footer/Footer";
 import Admin from "./AdminPanel/Admin";
 import EditUser from "./AdminPanel/EditUser/EditUser";
+import Job from "./Job/Job";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route path="/" element={<Main />} />
         <Route path="/login" element={<SignIn />} />
         <Route path="/registration" element={<SignUp />} />
+        <Route path='/job' element={<Job />} />
         <Route path="/coaches" element={<Coach />} />
         <Route path="/sports_bar" element={<SportsBar />} />
         <Route path="/sports_bar/:id" element={<OneElementBar />} />
@@ -41,7 +43,6 @@ function App() {
         <Route path="/admin/form" element={<Form />} />
         <Route path="/admin/coachform" element={<CoachForm />} />
       </Routes>
-      <Footer />
     </div>
   );
 }

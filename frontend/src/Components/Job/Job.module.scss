@@ -1,0 +1,44 @@
+
+.wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  .title {
+    padding-top: 3%;
+text-align: center;
+    overflow: hidden;
+    h1 {
+      margin-bottom: 20px;
+      display: inline-block;
+      vertical-align: top;
+      font-size: 30px;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-right: 15px;
+      line-height: 1.2;
+      color: white;
+      &:after {
+        content: "";
+        width: 1200px;
+        background: #151a1f;
+        height: 1px;
+        transform: translateX(20px);
+      }
+    }
+    &:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+  }
+  .textBlock {
+    .jobBlock {
+      padding: 34px 66px 1px;
+    }
+    .firstBlock {
+        margin-top: 2%;
+        background-color: #11161a;
+        color: white;
+    }
+  }
+}
