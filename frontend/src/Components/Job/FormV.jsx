@@ -1,10 +1,11 @@
-import React, { createRef, useState } from "react";
+import React, { useState } from "react";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
+import Select from "@mui/material/Select";
 import styles from "./Job.module.scss";
 import { useDispatch } from "react-redux";
 import { postVacation } from "../../features/vacationSlice";
+import swal from "sweetalert";
 const Form = () => {
   const [job, setJob] = React.useState("");
   const [style, setStyle] = useState(styles.input);
@@ -75,6 +76,14 @@ const dispatch = useDispatch()
 
 const handleAddForm = (e) => {
   e.preventDefault()
+  if (name !== "" && surname !== '' && job !== '' & email !== "" && message !== "" && number !== "") {
+    return swal(
+      "Заявка отправлена",
+      "Мы свяжемся с вами в ближайшее время",
+      "success"
+    );
+  }
+  swal("Форма не отправлена", "Заполните все поля", "warning");
   dispatch(postVacation({name, surname, email, number, message, job}))
 }
   return (
