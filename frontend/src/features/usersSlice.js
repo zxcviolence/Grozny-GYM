@@ -7,17 +7,17 @@ const initialState = {
   token: localStorage.getItem("token"),
   id: localStorage.getItem("id"),
   login: localStorage.getItem("login"),
-  user: null
+  user: null,
 };
 
 export const authSignIn = createAsyncThunk(
   "auth/signIn",
-  async ({ login, password }, thunkAPI) => {
+  async ({ login, password, image, cash }, thunkAPI) => {
     try {
       const res = await fetch("users/login", {
         method: "POST",
         headers: { "Content-type": "application/json" },
-        body: JSON.stringify({ login, password }),
+        body: JSON.stringify({ login, password, image, cash }),
       });
       const user = await res.json();
 
@@ -28,7 +28,7 @@ export const authSignIn = createAsyncThunk(
       localStorage.setItem("id", user.id);
       localStorage.setItem("login", user.login);
 
-      return thunkAPI.fulfillWithValue(user.candidate);
+      return thunkAPI.fulfillWithValue(user);
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -37,12 +37,24 @@ export const authSignIn = createAsyncThunk(
 
 export const editUser = createAsyncThunk(
   "edit/user",
-  async ({ id, login, password, name, surname, patronymic, banned, image, role}, thunkAPI) => {
+  async (
+    { id, login, password, name, surname, patronymic, banned, image, role },
+    thunkAPI
+  ) => {
     try {
       const res = await fetch(`/users/edituser/${id}`, {
         method: "PATCH",
         headers: { "Content-type": "application/json" },
-        body: JSON.stringify({ login, password, name, surname, patronymic, banned, image, role}),
+        body: JSON.stringify({
+          login,
+          password,
+          name,
+          surname,
+          patronymic,
+          banned,
+          image,
+          role,
+        }),
       });
       const user = await res.json();
       if (user.error) {
@@ -97,15 +109,15 @@ export const fetchUser = createAsyncThunk("fetch/user", async (_, thunkAPI) => {
 // Поднять бабло в AZINO ООО
 export const BalansUp = createAsyncThunk(
   "UpBalance/user",
-  async ({id, balance}, thunkAPI) => {
+  async ({ id, balance }, thunkAPI) => {
     try {
       const res = await fetch(`/users/upbalance/${id}`, {
         method: "PATCH",
         headers: {
-           "Content-type": "application/json",
-           Authorization: `Bearer ${thunkAPI.getState().users.token}`,
-          },
-        
+          "Content-type": "application/json",
+          Authorization: `Bearer ${thunkAPI.getState().users.token}`,
+        },
+
         body: JSON.stringify({ cash: balance }),
       });
       const user = await res.json();
@@ -135,9 +147,9 @@ const usersSlice = createSlice({
         state.error = action.payload;
       })
       .addCase(authSignIn.fulfilled, (state, action) => {
-        state.user = action.payload
         state.loading = false;
         state.error = null;
+        state.users = action.payload;
       })
 
       // REGISTER
@@ -178,7 +190,7 @@ const usersSlice = createSlice({
         state.error = action.payload;
       })
       .addCase(BalansUp.fulfilled, (state, action) => {
-        state.user.cash = action.payload
+        state.user.cash = action.payload;
         state.loading = false;
         state.error = null;
       })
@@ -199,7 +211,6 @@ const usersSlice = createSlice({
           if (item._id === localStorage.getItem("id")) {
             state.users = item;
           }
-          return state.users;
         });
       });
   },
