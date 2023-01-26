@@ -39,10 +39,6 @@ const Coach = () => {
     swal("Форма не отправлена", "Заполните все поля", "warning");
   };
 
-  if (loading) {
-    return <div className={styles.loader}>Loading</div>;
-  }
-
   return (
     <main>
       {coaches.map((coach) => {
