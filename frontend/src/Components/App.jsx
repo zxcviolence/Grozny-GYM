@@ -12,6 +12,7 @@ import Massage from "./Massage/Massage";
 import Form from "./Form/Form";
 import CoachForm from "./Form/CoachForm";
 import OneElementBar from "./Sportsbar/oneElementBar/OneElementBar";
+import FormV from '../Components/Job/FormV'
 import Footer from "./Footer/Footer";
 import Admin from "./AdminPanel/Admin";
 import EditUser from "./AdminPanel/EditUser/EditUser";
@@ -40,6 +41,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/profile/edituser" element={<EditUser />} />
         <Route path="/massage" element={<Massage />} />
+        <Route path="/vacation" element={<FormV />} />
         <Route path="/admin/form" element={<Form />} />
         <Route path="/admin/coachform" element={<CoachForm />} />
       </Routes>
