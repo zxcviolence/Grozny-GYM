@@ -45,6 +45,7 @@ function App() {
         <Route path="/admin/form" element={<Form />} />
         <Route path="/admin/coachform" element={<CoachForm />} />
       </Routes>
+      <Footer/>
     </div>
   );
 }
