@@ -35,7 +35,9 @@ const SignIn = () => {
   };
 
   useEffect(() => {
-
+    if (token) {
+      window.location.href = "/";
+    }
   }, [token]);
 
   function Copyright(props) {

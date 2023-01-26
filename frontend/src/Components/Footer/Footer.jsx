@@ -26,9 +26,9 @@ const Footer = () => {
         <p>Фитнес-программы</p>
         <p>Детский клуб</p>
         <p>Персональный тренинг</p>
-        <p>Массаж</p>
+        <a href="/massage">Массаж</a>
       </div>
-      <div className={styles.services}>
+      <div className={styles.work}>
         <div className={styles.title}>Работа</div>
         <a href="/job">Вакансии</a>
       </div>

@@ -79,11 +79,11 @@ const handleAddForm = (e) => {
   if (name !== "" && surname !== '' && job !== '' & email !== "" && message !== "" && number !== "") {
     return swal(
       "Заявка отправлена",
-      "Мы свяжемся с вами в ближайшее время",
+      "We свяжемся с you в ближайшее time",
       "success"
     );
   }
-  swal("Форма не отправлена", "Заполните все поля", "warning");
+  swal("Форма не отправлена", "Заполните all поля", "warning");
   dispatch(postVacation({name, surname, email, number, message, job}))
 }
   return (
@@ -176,7 +176,7 @@ const handleAddForm = (e) => {
                   required
                 >
                   <MenuItem value="">
-                    <em>Ничего</em>
+                    <em>На нинакого</em>
                   </MenuItem>
                   <MenuItem  value={"Администратор рецепции"}>
                     Администратор рецепции

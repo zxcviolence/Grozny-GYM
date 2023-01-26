@@ -65,15 +65,63 @@ main {
 
     .form {
       padding: 30px 20px;
+
+      Button {
+        display: block;
+        width: 100%;
+        max-width: 210px;
+        height: 55px;
+        line-height: 55px;
+        font-family: Gotham, sans-serif;
+        font-size: 14px;
+        font-weight: bold;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 2%;
+        outline: none;
+        border: none;
+        cursor: pointer;
+
+        min-width: 200px;
+        background: #11161a;
+        text-align: center;
+        line-height: 32px;
+        border: 1px solid #303a43 !important;
+        color: #fff !important;
+        font-size: 12px;
+        text-transform: uppercase;
+        font-weight: bold;
+        padding: 0 16px;
+        transform: perspective(1px) translateZ(0);
+        box-shadow: 0 0 1px transparent;
+        transition: 0.25s;
+
+        &::before {
+          content: "";
+          z-index: -1;
+          width: 40%;
+          height: 100%;
+          background: #e32028;
+          border-radius: 100%;
+
+          transform: scale(0);
+
+          transition: transform 0.25s ease-out;
+        }
+        &:hover {
+          background: #e32028;
+          border-color: #e32028 !important;
+        }
+      }
     }
   }
+}
 
-  .coachSecond {
-    width: 20%;
+.coachSecond {
+  width: 20%;
 
-    img {
-      width: 100%;
-      height: 100%;
-    }
+  img {
+    width: 100%;
+    height: 100%;
   }
 }

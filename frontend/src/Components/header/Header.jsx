@@ -25,9 +25,8 @@ const Header = () => {
   const token = localStorage.getItem("token");
   const id = localStorage.getItem("id");
   const login = useSelector((state) => state.users.login);
-
-  const user = useSelector((state) => state.users.user);
-
+  const user = useSelector((state) => state.users.users);
+  const filt = user.filter((i) => i._id === id);
 
   //UPBALAnce
   const dispatch = useDispatch();
@@ -37,13 +36,11 @@ const Header = () => {
   const UpBalanc = async (e) => {
     e.preventDefault();
     dispatch(BalansUp({ balance, id }));
-    setBalance("")
   };
 
   const handleSetBalance = (e) => {
-    setBalance(e.target.value)
+    setBalance(e.target.value);
   };
-  //
 
   const clearToken = () => {
     window.location.reload();
@@ -161,19 +158,22 @@ const Header = () => {
           {token && (
             <>
               <div className={styles.profilebox}>
-                <div className={styles.nickname}>{login}</div> |
-                <div className={styles.profile} onClick={() => window.location.reload()}>
+                <div className={styles.avatar}>
+                  <img src={`assets/images/avatars/${user.image}`} alt="тут должен быть аватар" />
+                </div>
+                <div className={styles.nickname}>{login}</div>
+                <div
+                  className={styles.profile}
+                  onClick={() => window.location.reload()}
+                >
                   <Link to="/admin/edituser">Личный кабинет</Link>
                 </div>
-                |
                 <div className={styles.logoutbtn}>
                   <button onClick={clearToken}>Выйти</button>
                 </div>
               </div>
-
               <div className={styles.user_ca2sh}>
-
-                <div> Денег на счету:{user.cash}</div>
+                <div> Денег на счету:{filt.cash}</div>
                 <Button onClick={handleOpen}>Пополнить счет</Button>
                 <Modal
                   open={open}
@@ -195,7 +195,7 @@ const Header = () => {
                       sx={{ mt: 2 }}
                     ></Typography>
                     <Typography>
-                      <form onSubmit={UpBalanc} required action="submit">
+                      <form onSubmit={UpBalanc} action="submit">
                         <PaymentForm />
                         <FormControl fullWidth sx={{ m: 1 }}>
                           <InputLabel htmlFor="outlined-adornment-amount">
@@ -207,13 +207,13 @@ const Header = () => {
                             value={balance}
                             onChange={handleSetBalance}
                             startAdornment={
-                              <InputAdornment required position="start">
-                                ₽
+                              <InputAdornment position="start">
+                                $
                               </InputAdornment>
                             }
                             label="Amount"
                           />
-                          <button
+                          <Button
                             className={styles.payBTN}
                             color="error"
                             variant="outlined"
@@ -221,14 +221,14 @@ const Header = () => {
                             type="submit"
                           >
                             PAY
-                          </button>
+                          </Button>
                         </FormControl>
                         {/* <input onChange={handleSetBalance} value={balance} /> */}
                       </form>
                     </Typography>
                   </Box>
                 </Modal>
-              </div>}
+              </div>
             </>
           )}
         </Offcanvas.Body>
