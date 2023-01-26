@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Link, NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { BalansUp, fetchUser } from "../../features/usersSlice";
 import styles from "./Header.module.scss";
 import logo from "../../images/logo.png";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import { BalansUp } from "../../features/usersSlice";
 import PaymentForm from "./Cards";
 import {
   FormControl,
@@ -22,16 +22,20 @@ const Header = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const [balance, setBalance] = useState("");
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const HandleClose = () => setOpen(false);
+
   const token = localStorage.getItem("token");
   const id = localStorage.getItem("id");
   const login = useSelector((state) => state.users.login);
-  const user = useSelector((state) => state.users.users);
-  const filt = user.filter((i) => i._id === id);
-
-  //UPBALAnce
+  const users = useSelector((state) => state.users.users);
   const dispatch = useDispatch();
 
-  const [balance, setBalance] = useState("");
+  useEffect(() => {
+    dispatch(fetchUser());
+  }, [dispatch]);
 
   const UpBalanc = async (e) => {
     e.preventDefault();
@@ -63,19 +67,14 @@ const Header = () => {
     boxShadow: 24,
     p: 4,
   };
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const HandleClose = () => setOpen(false);
 
   return (
     <header>
       <div className={styles.logo}>
         <a href="/">
-          {" "}
           <img src={logo} alt="logoPhoto" className={styles.logoImage} />
         </a>
       </div>
-
       <div className={styles.routes}>
         <NavLink
           style={({ isActive }) => {
@@ -130,11 +129,9 @@ const Header = () => {
           Спорт-Бар
         </NavLink>
       </div>
-
       <div className={styles.burger} onClick={handleShow}>
         <GiHamburgerMenu />
       </div>
-
       <Offcanvas
         show={show}
         onHide={handleClose}
@@ -159,7 +156,10 @@ const Header = () => {
             <>
               <div className={styles.profilebox}>
                 <div className={styles.avatar}>
-                  <img src={`assets/images/avatars/mark2.jpg`} alt="тут должен быть аватар" />
+                  <img
+                    src={`assets/images/avatars/${users.image}`}
+                    alt="тут должен быть аватар"
+                  />
                 </div>
                 <div className={styles.nickname}>{login}</div>
                 <div
@@ -173,7 +173,7 @@ const Header = () => {
                 </div>
               </div>
               <div className={styles.user_ca2sh}>
-                <div> Денег на счету:{filt.cash}</div>
+                <div>Кошелек: {users.cash} ₽</div>
                 <Button onClick={handleOpen}>Пополнить счет</Button>
                 <Modal
                   open={open}
@@ -202,7 +202,6 @@ const Header = () => {
                             Amount
                           </InputLabel>
                           <OutlinedInput
-                            //  sx={{ m: 2 }}
                             id="outlined-adornment-amount"
                             value={balance}
                             onChange={handleSetBalance}
@@ -223,7 +222,6 @@ const Header = () => {
                             PAY
                           </Button>
                         </FormControl>
-                        {/* <input onChange={handleSetBalance} value={balance} /> */}
                       </form>
                     </Typography>
                   </Box>
