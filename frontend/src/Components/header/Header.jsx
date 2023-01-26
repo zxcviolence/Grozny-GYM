@@ -26,8 +26,7 @@ const Header = () => {
   const id = localStorage.getItem("id");
   const login = useSelector((state) => state.users.login);
 
-  const user = useSelector((state) => state.users.users);
-  console.log(user, "users");
+  const user = useSelector((state) => state.users.user);
 
 
   //UPBALAnce
@@ -171,7 +170,9 @@ const Header = () => {
                   <button onClick={clearToken}>Выйти</button>
                 </div>
               </div>
+
               <div className={styles.user_ca2sh}>
+
                 <div> Денег на счету:{user.cash}</div>
                 <Button onClick={handleOpen}>Пополнить счет</Button>
                 <Modal
@@ -227,7 +228,7 @@ const Header = () => {
                     </Typography>
                   </Box>
                 </Modal>
-              </div>
+              </div>}
             </>
           )}
         </Offcanvas.Body>

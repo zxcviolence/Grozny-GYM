@@ -81,7 +81,7 @@ module.exports.usersController = {
         expiresIn: "24h",
       });
 
-      res.json({ token, login: payload.login, id: payload.id });
+      res.json({ token, login: payload.login, id: payload.id, candidate });
     } catch (error) {
       res.json({ error: error.message });
     }
@@ -171,7 +171,7 @@ module.exports.usersController = {
       const user = await User.findById(req.params.id);
       const newBalance = Number(user.cash) + Number(req.body.cash)
       await User.findByIdAndUpdate(req.params.id, { cash: newBalance });
-      res.json("кошелек пополнен");
+      res.json(user.cash);
 
     } catch (error) {
       res.status(400).json(error.message);

@@ -7,6 +7,7 @@ const initialState = {
   token: localStorage.getItem("token"),
   id: localStorage.getItem("id"),
   login: localStorage.getItem("login"),
+  user: null
 };
 
 export const authSignIn = createAsyncThunk(
@@ -27,7 +28,7 @@ export const authSignIn = createAsyncThunk(
       localStorage.setItem("id", user.id);
       localStorage.setItem("login", user.login);
 
-      return thunkAPI.fulfillWithValue(user);
+      return thunkAPI.fulfillWithValue(user.candidate);
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -38,14 +39,12 @@ export const editUser = createAsyncThunk(
   "edit/user",
   async ({ id, login, password, name, surname, patronymic, banned, image, role}, thunkAPI) => {
     try {
-      console.log(id, 'id', login, password, name, surname, patronymic, banned, image, role, 'act');
       const res = await fetch(`/users/edituser/${id}`, {
         method: "PATCH",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({ login, password, name, surname, patronymic, banned, image, role}),
       });
       const user = await res.json();
-
       if (user.error) {
         return thunkAPI.rejectWithValue(user.error);
       }
@@ -100,7 +99,6 @@ export const BalansUp = createAsyncThunk(
   "UpBalance/user",
   async ({id, balance}, thunkAPI) => {
     try {
-      console.log(id, 'id');
       const res = await fetch(`/users/upbalance/${id}`, {
         method: "PATCH",
         headers: {
@@ -137,6 +135,7 @@ const usersSlice = createSlice({
         state.error = action.payload;
       })
       .addCase(authSignIn.fulfilled, (state, action) => {
+        state.user = action.payload
         state.loading = false;
         state.error = null;
       })
@@ -179,6 +178,7 @@ const usersSlice = createSlice({
         state.error = action.payload;
       })
       .addCase(BalansUp.fulfilled, (state, action) => {
+        state.user.cash = action.payload
         state.loading = false;
         state.error = null;
       })
