@@ -3,10 +3,10 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import styles from "./Job.module.scss";
+import { useDispatch } from "react-redux";
+import { postVacation } from "../../features/vacationSlice";
 const Form = () => {
   const [job, setJob] = React.useState("");
-  const upload = createRef("uploadForm");
-  const [summary, setSummary] = useState("");
   const [style, setStyle] = useState(styles.input);
   const [style2, setStyle2] = useState(styles.input);
   const [style3, setStyle3] = useState(styles.input);
@@ -70,11 +70,18 @@ const Form = () => {
       setStyle5();
     }
   };
+
+const dispatch = useDispatch()
+
+const handleAddForm = (e) => {
+  e.preventDefault()
+  dispatch(postVacation({name, surname, email, number, message, job}))
+}
   return (
     <div>
       <div className={styles.jobForm}>
         <h3 style={{ color: "white" }}>Заявка на вакансию</h3>
-        <form action="">
+        <form onSubmit={handleAddForm}>
           <div>
             <div className={styles.label}>
               <i>ВАШЕ ИМЯ</i>
@@ -188,30 +195,7 @@ const Form = () => {
               </FormControl>
             </div>
           </div>
-          <form
-            ref={upload}
-            id="uploadForm"
-            action={`http://localhost:4000/upload/`}
-            method="post"
-            target="_blank"
-            encType="multipart/form-data"
-          >
-            <input
-              value={summary}
-              accept="text/plain,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-              data-max-size="20971520"
-              onChange={(e) => {
-                setSummary(e.target.value);
-              }}
-              type="file"
-              name="sampleFile"
-            />
-            <input type="submit" value="Загрузить резюме" />
-          </form>
-          <div className={styles.message}>
-            до 20мб DOC DOCX PDF TXT. <br />
-            <b>Заявка с резюме рассматривается в первую очередь.</b>
-          </div>
+          
           <button className={styles.submit} type="submit">
             Отправить заявку
           </button>
