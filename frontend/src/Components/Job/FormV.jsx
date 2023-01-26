@@ -80,7 +80,7 @@ const handleAddForm = (e) => {
   return (
     <div>
       <div className={styles.jobForm}>
-        <h3 style={{ color: "white" }}>Заявка на вакансию</h3>
+        <h3 style={{ color: "white" }}>Заполнить вакансию</h3>
         <form onSubmit={handleAddForm}>
           <div>
             <div className={styles.label}>
@@ -93,6 +93,7 @@ const handleAddForm = (e) => {
               value={name}
               onChange={handleSetName}
               placeholder="Арби"
+              required
             />
           </div>
           <div>
@@ -106,6 +107,7 @@ const handleAddForm = (e) => {
               onChange={handleSetSurname}
               onBlur={handleSetStyle2}
               placeholder="Цугаев"
+              required
             />
           </div>
           <div>
@@ -119,6 +121,7 @@ const handleAddForm = (e) => {
               value={email}
               onBlur={handleSetStyle3}
               placeholder="arbitsugaev@gmail.com"
+              required
             />
           </div>
           <div>
@@ -148,6 +151,7 @@ const handleAddForm = (e) => {
               onBlur={handleSetStyle5}
               value={message}
               onChange={handleSetMessage}
+              required
             ></textarea>
           </div>
           <div>
@@ -160,6 +164,7 @@ const handleAddForm = (e) => {
                   onChange={handleJobChange}
                   displayEmpty
                   inputProps={{ "aria-label": "Without label" }}
+                  required
                 >
                   <MenuItem value="">
                     <em>Ничего</em>
