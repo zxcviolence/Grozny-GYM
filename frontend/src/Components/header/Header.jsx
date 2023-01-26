@@ -159,7 +159,7 @@ const Header = () => {
             <>
               <div className={styles.profilebox}>
                 <div className={styles.avatar}>
-                  <img src={`assets/images/avatars/${user.image}`} alt="тут должен быть аватар" />
+                  <img src={`assets/images/avatars/mark2.jpg`} alt="тут должен быть аватар" />
                 </div>
                 <div className={styles.nickname}>{login}</div>
                 <div
