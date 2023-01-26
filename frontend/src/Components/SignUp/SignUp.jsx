@@ -144,15 +144,6 @@ const SignUp = () => {
                 value={password}
               />
 
-<<<<<<< HEAD
-                type="number"
-                id="date"
-                onChange={handleSetAge}
-                value={age}
-              />
-
-=======
->>>>>>> 72cb1faa73f7f8edfcae76a29fbf9012f47fd290
               {gmailError && <div className={styles.gmError}> {gmailError} </div>}
               <Button
                 type="submit"
