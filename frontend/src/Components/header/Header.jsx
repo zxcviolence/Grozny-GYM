@@ -125,8 +125,8 @@ const Header = () => {
             <>
               <div className={styles.profilebox}>
                 <div className={styles.nickname}>{login}</div> |
-                <div className={styles.profile}>
-                  <Link to="/profile/edituser">Личный кабинет</Link>
+                <div className={styles.profile} onClick={() => window.location.reload()}>
+                  <Link to="/admin/edituser">Личный кабинет</Link>
                 </div>
                 |
                 <div className={styles.logoutbtn}>
