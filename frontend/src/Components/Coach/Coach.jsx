@@ -32,11 +32,17 @@ const Coach = () => {
     if (name !== "" && weight !== "" && isSport !== "" && phone !== "") {
       return swal(
         "Форма отправлена",
-        "Мы свяжемся с вами в ближайшее время",
+        "We свяжемся с вами в ближайшее time",
         "success"
       );
+    } else if (
+      name === "" ||
+      weight === "" ||
+      isSport === "" ||
+      phone === ""
+    ) {
+      return swal("", "Заполните all поля", "warning");
     }
-    swal("Форма не отправлена", "Заполните все поля", "warning");
   };
 
   return (
