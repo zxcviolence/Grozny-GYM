@@ -30,7 +30,7 @@ const Footer = () => {
       </div>
       <div className={styles.services}>
         <div className={styles.title}>Работа</div>
-        <a href="/vacation">Вакансии</a>
+        <a href="/job">Вакансии</a>
       </div>
       <div className={styles.clubCards}>
         <div className={styles.title}>Клубные карты</div>
