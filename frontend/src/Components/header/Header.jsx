@@ -82,6 +82,19 @@ const Header = () => {
         >
           Спорт-Бар
         </NavLink>
+        <NavLink
+          style={({ isActive }) => {
+            return {
+              color: isActive ? "#960018" : "white",
+              textDecoration: isActive ? "underline" : "none",
+              textUnderlineOffset: "6px",
+            };
+          }}
+          className={styles.navigationButton}
+          to="/job"
+        >
+          Вакансии
+        </NavLink>
       </div>
 
       <div className={styles.burger} onClick={handleShow}>
