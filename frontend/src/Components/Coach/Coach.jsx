@@ -7,6 +7,7 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import swal from "sweetalert";
 
 const Coach = () => {
   const dispatch = useDispatch();
@@ -14,7 +15,7 @@ const Coach = () => {
   const error = useSelector((state) => state.coach.error);
   const loading = useSelector((state) => state.coach.loading);
   const [name, setName] = useState("");
-  const [phone, setphone] = useState("+7");
+  const [phone, setphone] = useState("");
   const [weight, setWeight] = useState("");
   const [isSport, setIsSport] = useState("");
   const [select, setSelect] = useState({
@@ -28,6 +29,14 @@ const Coach = () => {
   const handleForm = (e) => {
     e.preventDefault();
     dispatch(postForm({ name, phone, weight, isSport }));
+    if (name !== "" && weight !== "" && isSport !== "" && phone !== "") {
+      return swal(
+        "Форма отправлена",
+        "Мы свяжемся с вами в ближайшее время",
+        "success"
+      );
+    }
+    swal("Форма не отправлена", "Заполните все поля", "warning");
   };
 
   if (loading) {
@@ -69,6 +78,7 @@ const Coach = () => {
                     autoComplete="name"
                     onChange={(e) => setName(e.target.value)}
                     value={name}
+                    placeholder="Иван"
                   />
                   <TextField
                     margin="normal"
@@ -81,6 +91,7 @@ const Coach = () => {
                     autoComplete="tel"
                     onChange={(e) => setphone(e.target.value)}
                     value={phone}
+                    placeholder="+79659506825"
                   />
                   <TextField
                     margin="normal"
@@ -93,6 +104,7 @@ const Coach = () => {
                     autoComplete="weight"
                     onChange={(e) => setWeight(e.target.value)}
                     value={weight}
+                    placeholder="99"
                   />
                   <TextField
                     margin="normal"
@@ -105,6 +117,7 @@ const Coach = () => {
                     autoComplete="isSport"
                     onChange={(e) => setIsSport(e.target.value)}
                     value={isSport}
+                    placeholder="Легкая атлетика"
                   />
                   <Button
                     type="submit"
