@@ -139,14 +139,10 @@ module.exports.usersController = {
 
       const user = await User.findById(req.params.id).populate("subscription");
       const subs = await Subscription.findById(req.params.subId);
-      console.log(subs._id, "subs._id");
-      console.log(user.subscription[0]._id, "user.subscription._id ");
 
       const cash = user.cash;
       const price = subs.price;
-
-      if (user.subscription.filter((i) => i._id) === subs._id) {
-        console.log(i);
+      if ((user.subscription.findIndex((i) => String(i._id) === String(subs._id))) !== -1) {
         return res.json("sac del");
       }
       if (cash < price) {
@@ -173,7 +169,7 @@ module.exports.usersController = {
   upBalance: async (req, res) => {
     try {
       const user = await User.findById(req.params.id);
-      const newBalance = user.cash + req.body.cash;
+      const newBalance = Number(user.cash) + Number(req.body.cash)
       await User.findByIdAndUpdate(req.params.id, { cash: newBalance });
       res.json("кошелек пополнен");
 

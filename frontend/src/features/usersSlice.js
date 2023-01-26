@@ -95,6 +95,33 @@ export const fetchUser = createAsyncThunk("fetch/user", async (_, thunkAPI) => {
   }
 });
 
+// Поднять бабло в AZINO ООО
+export const BalansUp = createAsyncThunk(
+  "UpBalance/user",
+  async ({id, balance}, thunkAPI) => {
+    try {
+      console.log(id, 'id');
+      const res = await fetch(`/users/upbalance/${id}`, {
+        method: "PATCH",
+        headers: {
+           "Content-type": "application/json",
+           Authorization: `Bearer ${thunkAPI.getState().users.token}`,
+          },
+        
+        body: JSON.stringify({ cash: balance }),
+      });
+      const user = await res.json();
+
+      if (user.error) {
+        return thunkAPI.rejectWithValue(user.error);
+      }
+      return thunkAPI.fulfillWithValue(user);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 const usersSlice = createSlice({
   name: "users",
   initialState,
@@ -141,6 +168,19 @@ const usersSlice = createSlice({
       .addCase(editUser.fulfilled, (state, action) => {
         state.loading = null;
         state.error = false;
+      })
+      //UPBALANce
+      .addCase(BalansUp.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(BalansUp.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(BalansUp.fulfilled, (state, action) => {
+        state.loading = false;
+        state.error = null;
       })
 
       //FETCH USERS

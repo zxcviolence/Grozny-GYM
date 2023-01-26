@@ -55,7 +55,19 @@ width: 180px;
     }
   }
 
+  
+
   .offcanvas_body {
+
+    .user_ca2sh{
+      display: grid;
+    }
+
+    .UpBalanc{
+      display: flex;
+      margin: auto;
+      justify-content: center;
+    }
   }
 }
 
@@ -185,3 +197,9 @@ width: 180px;
     }
   }
 }
+
+
+.payBTN{
+  margin-top: 2%;
+}
+
