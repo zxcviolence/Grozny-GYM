@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import SportsBar from "./Sportsbar/SportsBar";
 import Coach from "./Coach/Coach";
 import Simulators from "./Simulators/Simulators";
+import OneSimulator from "./Simulators/OneSimulator";
 import SignIn from "./SignIn/SignIn";
 import SignUp from "./SignUp/SignUp";
 import Main from "./Main/Main";
@@ -29,9 +30,11 @@ function App() {
       <Routes>
         <Route path="/admin" element={<Admin />} />
         <Route path="/simulators" element={<Simulators />} />
+        <Route path="/simulators/:id" element={<OneSimulator />} />
         <Route path="/" element={<Main />} />
         <Route path="/login" element={<SignIn />} />
         <Route path="/registration" element={<SignUp />} />
+        <Route path="/job" element={<Job />} />
         <Route path="/coaches" element={<Coach />} />
         <Route path="/sports_bar" element={<SportsBar />} />
         <Route path="/sports_bar/:id" element={<OneElementBar />} />
