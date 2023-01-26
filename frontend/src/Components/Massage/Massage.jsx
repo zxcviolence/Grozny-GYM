@@ -11,6 +11,7 @@ import styles from "./Massage.module.scss";
 import photo from "../../images/massage2.jpg";
 import photo2 from "../../images/massage.jpg";
 import { separator } from "../helpers/separator";
+import swal from "sweetalert";
 
 const Massage = () => {
   const massage = useSelector((state) => state.massage.massage);
@@ -19,8 +20,8 @@ const Massage = () => {
   const dispatch = useDispatch();
 
   const [name, setName] = useState("");
-  const [phone, setphone] = useState("+7");
-  const [email, setEmail] = useState("@mail.ru");
+  const [phone, setphone] = useState("");
+  const [email, setEmail] = useState("");
   const [forWhichMassage, setforWhichMassage] = useState("");
 
   const handleSetName = (e) => {
@@ -40,6 +41,14 @@ const Massage = () => {
   const handleForm = (e) => {
     e.preventDefault();
     dispatch(postForm({ name, phone, email, forWhichMassage }));
+    if (name !== "" && email !== "" && forWhichMassage !== "" && phone !== "") {
+      return swal(
+        "Форма отправлена",
+        "Мы свяжемся с вами в ближайшее время",
+        "success"
+      );
+    }
+    swal("Форма не отправлена", "Заполните все поля", "warning");
   };
 
   useEffect(() => {
@@ -85,8 +94,8 @@ const Massage = () => {
             </div>
           </div>
         </div>
-        </Fade>
-        <Fade right cascade>
+      </Fade>
+      <Fade right cascade>
         <div className={styles.wrapper}>
           <div className={styles.image}>
             <img src={photo2} alt="massage" />
@@ -157,8 +166,8 @@ const Massage = () => {
         <h1 className={styles.audit}>
           Как записаться на массаж
         </h1>
-        </Fade>
-        <Fade bottom cascade>
+      </Fade>
+      <Fade bottom cascade>
         <div className={styles.wrapper3}>
           <div className={styles.form}>
             <Typography component="h1" variant="h4" className={styles.typo}>
@@ -180,6 +189,7 @@ const Massage = () => {
                 autoComplete="name"
                 onChange={handleSetName}
                 value={name}
+                placeholder="Билли"
               />
               <TextField
                 margin="normal"
@@ -192,6 +202,7 @@ const Massage = () => {
                 autoComplete="mail"
                 onChange={handleSetEmail}
                 value={email}
+                placeholder="example@mail.ru"
               />
               <TextField 
                 margin="normal"
@@ -204,6 +215,7 @@ const Massage = () => {
                 autoComplete="tel"
                 onChange={handleSetPhone}
                 value={phone}
+                placeholder="+79659506825"
               />
               <TextField
                 margin="normal"
@@ -216,6 +228,7 @@ const Massage = () => {
                 autoComplete="massage"
                 onChange={handleSetMassaje}
                 value={forWhichMassage}
+                placeholder="На массаж шеи"
               />
               <Button
                 type="submit"
