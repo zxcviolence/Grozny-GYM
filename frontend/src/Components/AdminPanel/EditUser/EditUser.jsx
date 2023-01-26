@@ -203,7 +203,7 @@ const EditUser = () => {
                 />
                 <input type="submit" value="Загрузить" />
               </form>
-              <button className={styles.edit} type="submit">
+              <button className={styles.edit} type="submit" onClick={() => window.location.reload()}>
                 Изменить
               </button>
             </form>
