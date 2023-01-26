@@ -58,9 +58,9 @@ const SignIn = () => {
 
   const theme = createTheme();
 
-  const handleSubmit = async (e) => {
-    await e.preventDefault();
-    await dispatch(authSignIn({ login, password }));
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(authSignIn({ login, password }));
   };
 
   return (

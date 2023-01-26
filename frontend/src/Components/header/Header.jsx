@@ -28,6 +28,7 @@ const Header = () => {
 
   const user = useSelector((state) => state.users.user);
 
+
   //UPBALAnce
   const dispatch = useDispatch();
 
@@ -36,10 +37,11 @@ const Header = () => {
   const UpBalanc = async (e) => {
     e.preventDefault();
     dispatch(BalansUp({ balance, id }));
+    setBalance("")
   };
 
   const handleSetBalance = (e) => {
-    setBalance(e.target.value);
+    setBalance(e.target.value)
   };
   //
 
@@ -168,7 +170,9 @@ const Header = () => {
                   <button onClick={clearToken}>Выйти</button>
                 </div>
               </div>
-              {user && <div className={styles.user_ca2sh}>
+
+              <div className={styles.user_ca2sh}>
+
                 <div> Денег на счету:{user.cash}</div>
                 <Button onClick={handleOpen}>Пополнить счет</Button>
                 <Modal
@@ -191,7 +195,7 @@ const Header = () => {
                       sx={{ mt: 2 }}
                     ></Typography>
                     <Typography>
-                      <form onSubmit={UpBalanc} action="submit">
+                      <form onSubmit={UpBalanc} required action="submit">
                         <PaymentForm />
                         <FormControl fullWidth sx={{ m: 1 }}>
                           <InputLabel htmlFor="outlined-adornment-amount">
@@ -203,13 +207,13 @@ const Header = () => {
                             value={balance}
                             onChange={handleSetBalance}
                             startAdornment={
-                              <InputAdornment position="start">
-                                $
+                              <InputAdornment required position="start">
+                                ₽
                               </InputAdornment>
                             }
                             label="Amount"
                           />
-                          <Button
+                          <button
                             className={styles.payBTN}
                             color="error"
                             variant="outlined"
@@ -217,7 +221,7 @@ const Header = () => {
                             type="submit"
                           >
                             PAY
-                          </Button>
+                          </button>
                         </FormControl>
                         {/* <input onChange={handleSetBalance} value={balance} /> */}
                       </form>

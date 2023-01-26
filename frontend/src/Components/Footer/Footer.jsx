@@ -28,6 +28,10 @@ const Footer = () => {
         <p>Персональный тренинг</p>
         <p>Массаж</p>
       </div>
+      <div className={styles.services}>
+        <div className={styles.title}>Работа</div>
+        <a href="/job">Вакансии</a>
+      </div>
       <div className={styles.clubCards}>
         <div className={styles.title}>Клубные карты</div>
         <p>Виды клубных карт</p>
