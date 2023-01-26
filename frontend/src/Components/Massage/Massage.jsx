@@ -19,8 +19,8 @@ const Massage = () => {
   const dispatch = useDispatch();
 
   const [name, setName] = useState("");
-  const [phone, setphone] = useState("");
-  const [email, setEmail] = useState("");
+  const [phone, setphone] = useState("+7");
+  const [email, setEmail] = useState("@mail.ru");
   const [forWhichMassage, setforWhichMassage] = useState("");
 
   const handleSetName = (e) => {
@@ -50,7 +50,9 @@ const Massage = () => {
     return <h1>{error.message}</h1>;
   }
 
-
+  if (loading) {
+    return <div className={styles.loader}>Loading</div>;
+  }
 
   return (
     <>
@@ -83,6 +85,8 @@ const Massage = () => {
             </div>
           </div>
         </div>
+        </Fade>
+        <Fade right cascade>
         <div className={styles.wrapper}>
           <div className={styles.image}>
             <img src={photo2} alt="massage" />
@@ -123,7 +127,7 @@ const Massage = () => {
             </div>
           </div>
         </div>
-        <div style={{ textAlign: "center", fontSize: "40px", marginTop: "2%" }}>
+        <div className={styles.noWrapper}>
           Наши услуги
         </div>
         <div className={styles.wrapper2}>
@@ -150,15 +154,17 @@ const Massage = () => {
             );
           })}
         </div>
-        <h1 style={{ textAlign: "center", marginBottom: "3%" }}>
+        <h1 className={styles.audit}>
           Как записаться на массаж
         </h1>
+        </Fade>
+        <Fade bottom cascade>
         <div className={styles.wrapper3}>
           <div className={styles.form}>
-            <Typography component="h1" variant="h5">
+            <Typography component="h1" variant="h4" className={styles.typo}>
               Заполните форму
             </Typography>
-            <Box
+            <Box className={styles.box}
               component="form"
               noValidate
               onSubmit={handleForm}
@@ -187,7 +193,7 @@ const Massage = () => {
                 onChange={handleSetEmail}
                 value={email}
               />
-              <TextField
+              <TextField 
                 margin="normal"
                 required
                 fullWidth
@@ -228,7 +234,7 @@ const Massage = () => {
             <Typography component="h1" variant="h5">
               <div>Запишитесь по телефону</div>
             </Typography>
-            <div>
+            <div className={styles.phone}>
               Позвоните в отдел продаж по телефону
               <a href="tel:+7937 935 99 92"> +7(937) 935 99 92</a>
             </div>

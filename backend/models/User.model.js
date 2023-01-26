@@ -14,10 +14,10 @@ const userSchema = mongoose.Schema({
         type: mongoose.SchemaTypes.ObjectId,
         default: null,
       }],
-    role: [{
+    role: {
         type: String,
         default: "Пользователь",
-    }],
+    },
     image: {
         type: String,
     },

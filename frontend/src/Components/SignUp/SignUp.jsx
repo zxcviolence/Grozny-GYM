@@ -136,44 +136,9 @@ const SignUp = () => {
                 fullWidth
                 margin="normal"
                 name="password"
-                label="Password"
+                label="Пароль"
                 type="password"
                 id="password"
-                autoComplete="current-password"
-                onChange={handleSetPassword}
-                value={password}
-              />
-              <TextField
-                required
-                fullWidth
-                margin="normal"
-                name="ФИО"
-                label="ФИО"
-                type="text"
-                id="text"
-                onChange={handleSetName}
-                value={name}
-              />
-              <TextField
-                required
-                fullWidth
-                margin="normal"
-                name="Возраст"
-                label="Возраст"
-
-                type="number"
-                id="date"
-                onChange={handleSetAge}
-                value={age}
-              />
-              <TextField
-                required
-                fullWidth
-                margin="normal"
-                name="ФИО"
-                label="ФИО"
-                type="text"
-                id="text"
                 autoComplete="current-password"
                 onChange={handleSetPassword}
                 value={password}

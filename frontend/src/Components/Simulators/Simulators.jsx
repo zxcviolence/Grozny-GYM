@@ -6,36 +6,42 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchSimulators } from "../../features/simulatorsSlice";
 const Simulators = () => {
+  const dispatch = useDispatch();
+  const simulators = useSelector((state) => state.simulators.simulators);
+  const loading = useSelector((state) => state.simulators.loading);
 
-    const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(fetchSimulators());
+  }, [dispatch]);
 
-    useEffect(() => {
-        dispatch(fetchSimulators())
-    }, [dispatch])
-    const simulators = useSelector((state) => state.simulators.simulators )
+  if (loading) {
+    return <div className={styles.loader}>Loading</div>;
+  }
+
   return (
     <>
-    <Flip bottom>
+      <Flip bottom>
         <h1 className={styles.h1}>Тренажёры</h1>
       </Flip>
-    
-        <div className={styles.main_content}>
-     
 
-      {simulators.map((simulator) => {
-        return (
+      <div className={styles.main_content}>
+        {simulators.map((simulator) => {
+          return (
             <Fade key={simulator._id} bottom cascade>
-                <div className={styles.list}>
-            <div className={styles.section}>
-        <div className={styles.img}>
-          <img src={`assets/images/simulators/${simulator.image}`} alt="" />
-          <div className={styles.title}>{simulator.title}</div>
-        </div>
-      </div></div>
-      </Fade>
-        )
-      })}
-      
+              <div className={styles.list}>
+                <div className={styles.section}>
+                  <div className={styles.img}>
+                    <img
+                      src={`assets/images/simulators/${simulator.image}`}
+                      alt=""
+                    />
+                    <div className={styles.title}>{simulator.title}</div>
+                  </div>
+                </div>
+              </div>
+            </Fade>
+          );
+        })}
       </div>
     </>
   );

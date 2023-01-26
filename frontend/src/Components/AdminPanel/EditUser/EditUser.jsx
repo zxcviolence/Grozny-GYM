@@ -1,7 +1,7 @@
 import React, { createRef, useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { editUser } from "../../../features/usersSlice";
+import { editUser, fetchUser } from "../../../features/usersSlice";
 import Admin from "../Admin";
 import styles from "./EditUser.module.scss";
 
@@ -113,20 +113,20 @@ const EditUser = () => {
                 </div>
               </div>
               <div className={styles.divider}></div>
-              <div className={styles.formGroup}>
-                <label>Группа:</label>
-                <div>
-                  <input
-                    className={styles.formControl}
-                    type="text"
-                    onChange={handleSetRole}
-                    value={role}
-                    maxLength="40"
-                    placeholder={users.role}
-                    name="editrole"
-                  />
-                </div>
-              </div>
+              {users.role === 'Администратор' ? <div className={styles.formGroup}>
+                      <label>Группа:</label>
+                      <div>
+                        <input
+                          className={styles.formControl}
+                          type="text"
+                          onChange={handleSetRole}
+                          value={role}
+                          maxLength="40"
+                          placeholder={users.role}
+                          name="editrole"
+                        />
+                      </div>
+                    </div> : null}
               {/* <div className={styles.formGroup}>
                 <label>
                   Забанен:{" "}
