@@ -126,7 +126,7 @@ const Header = () => {
               <div className={styles.profilebox}>
                 <div className={styles.nickname}>{login}</div> |
                 <div className={styles.profile}>
-                  <Link to="/profile">Личный кабинет</Link>
+                  <Link to="/profile/edituser">Личный кабинет</Link>
                 </div>
                 |
                 <div className={styles.logoutbtn}>

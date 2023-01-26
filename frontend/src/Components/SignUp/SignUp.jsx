@@ -136,7 +136,7 @@ const SignUp = () => {
                 fullWidth
                 margin="normal"
                 name="password"
-                label="Password"
+                label="Пароль"
                 type="password"
                 id="password"
                 autoComplete="current-password"
@@ -166,18 +166,7 @@ const SignUp = () => {
                 onChange={handleSetAge}
                 value={age}
               />
-              <TextField
-                required
-                fullWidth
-                margin="normal"
-                name="ФИО"
-                label="ФИО"
-                type="text"
-                id="text"
-                autoComplete="current-password"
-                onChange={handleSetPassword}
-                value={password}
-              />
+
               {gmailError && <div className={styles.gmError}> {gmailError} </div>}
               <Button
                 type="submit"
