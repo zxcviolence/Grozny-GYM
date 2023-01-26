@@ -143,41 +143,7 @@ const SignUp = () => {
                 onChange={handleSetPassword}
                 value={password}
               />
-              <TextField
-                required
-                fullWidth
-                margin="normal"
-                name="ФИО"
-                label="ФИО"
-                type="text"
-                id="text"
-                onChange={handleSetName}
-                value={name}
-              />
-              <TextField
-                required
-                fullWidth
-                margin="normal"
-                name="Возраст"
-                label="Возраст"
 
-                type="number"
-                id="date"
-                onChange={handleSetAge}
-                value={age}
-              />
-              <TextField
-                required
-                fullWidth
-                margin="normal"
-                name="ФИО"
-                label="ФИО"
-                type="text"
-                id="text"
-                autoComplete="current-password"
-                onChange={handleSetPassword}
-                value={password}
-              />
               {gmailError && <div className={styles.gmError}> {gmailError} </div>}
               <Button
                 type="submit"

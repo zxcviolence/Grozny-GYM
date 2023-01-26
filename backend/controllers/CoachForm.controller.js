@@ -23,4 +23,12 @@ module.exports.coachFormController = {
       return res.json({ error: error });
     }
   },
+  removeForm: async (req, res) => {
+    try {
+      await CoachForm.findByIdAndRemove(req.params.id);
+      return res.json("Удалено");
+    } catch (error) {
+      return res.status(400).json({ error: error.message });
+    }
+  },
 };
