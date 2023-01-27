@@ -17,6 +17,7 @@ import Admin from "./AdminPanel/Admin";
 import EditUser from "./AdminPanel/EditUser/EditUser";
 import Job from "./Job/Job";
 import AddSims from "./AdminPanel/Simulators/AddSims";
+import ControlUser from "./AdminPanel/ControlUser/ControlUser";
 
 function App() {
   return (
@@ -24,7 +25,7 @@ function App() {
       {window.location.pathname === "/profile/" ||
         window.location.pathname === "/profile/edituser/" ||
         window.location.pathname === "/profile" ||
-        window.location.pathname === "/profile/edituser" ||  window.location.pathname === "/admin/add/simulators" || window.location.pathname === "/admin/add/simulators/" ? null : (
+        window.location.pathname === "/profile/edituser" ||  window.location.pathname === "/admin/control/" ||  window.location.pathname === "/admin/add/simulators" || window.location.pathname === "/admin/add/simulators/" ? null : (
         <Header />
       )}
 
@@ -45,11 +46,12 @@ function App() {
         <Route path="/admin/add/simulators" element={<AddSims />} />
         <Route path="/admin/form" element={<Form />} />
         <Route path="/admin/coachform" element={<CoachForm />} />
+        <Route path="/admin/control" element={<ControlUser />} />
       </Routes>
       {window.location.pathname === "/profile/" ||
         window.location.pathname === "/profile/edituser/" ||
         window.location.pathname === "/profile" ||
-        window.location.pathname === "/profile/edituser" || window.location.pathname === "/admin/add/simulators" || window.location.pathname === "/admin/add/simulators/"? null : (
+        window.location.pathname === "/profile/edituser" || window.location.pathname === "/admin/control/" || window.location.pathname === "/admin/add/simulators" || window.location.pathname === "/admin/add/simulators/"? null : (
         <Footer />
       )}
 
