@@ -166,7 +166,10 @@ const Header = () => {
                   />
                 </div>
                 <div className={styles.nickname}>{login}</div>
-                <div onClick={() => window.location.reload()} className={styles.profile}>
+                <div
+                  onClick={() => window.location.reload()}
+                  className={styles.profile}
+                >
                   <Link to="/profile/edituser">Личный кабинет</Link>
                 </div>
                 <div className={styles.logoutbtn}>
@@ -176,7 +179,9 @@ const Header = () => {
                 </div>
               </div>
               <div className={styles.user_ca2sh}>
-                <div><IoWallet/> Кошелек: {users.cash} ₽</div>
+                <div>
+                  <IoWallet /> Кошелек: {users.cash} ₽
+                </div>
                 <Button onClick={handleOpen}>Пополнить счет</Button>
                 <Modal
                   open={open}
