@@ -16,11 +16,11 @@ const Simulators = () => {
   }, [dispatch]);
 
   if (loading) {
-    return <div className={styles.loader}>Loading</div>;
+    return <div className={styles.loaderdiv}><div className={styles.loader}>Loading</div></div>;
   }
 
   return (
-    <>
+    <div className={styles.maib}>
       <Flip bottom>
         <h1 className={styles.h1}>Тренажёры</h1>
       </Flip>
@@ -37,7 +37,7 @@ const Simulators = () => {
                       alt=""
                     />
                     <div className={styles.title}>{simulator.title}</div>
-                    <Link to = {`${simulator._id}`} className={styles.link}><h4 className={styles.info}>Узнать больше</h4></Link>
+                    <Link to={`${simulator._id}`} className={styles.link}><h4 className={styles.info}>Узнать больше</h4></Link>
                   </div>
                 </div>
               </div>
@@ -45,7 +45,7 @@ const Simulators = () => {
           );
         })}
       </div>
-    </>
+    </div>
   );
 };
 

@@ -41,7 +41,7 @@ const Coach = () => {
   };
 
   if (loading) {
-    return <div className={styles.loader}>Loading</div>;
+    return <div className={styles.loaderdiv}><div className={styles.loader}>Loading</div></div>;
   }
 
   return (
