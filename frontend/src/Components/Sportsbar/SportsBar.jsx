@@ -30,6 +30,13 @@ const SportsBar = () => {
   if (loading) {
     return <div className={styles.loaderdiv}><div className={styles.loader}>Loading</div></div>;
   }
+  const handleTop = () => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  };
 
   return (
     <div className={styles.main_unit}>
@@ -63,7 +70,7 @@ const SportsBar = () => {
                     Цена: { separator(item.price)} ₽
                   </Typography>
                 </CardContent>
-                <Link to={`${item._id}`}> <Button size="small">Узнать больше</Button>   </Link>
+                <Link  onClick={handleTop} to={`${item._id}`}> <Button size="small">Узнать больше</Button>   </Link>
               </Card>
            
             </Fade>

@@ -50,8 +50,8 @@ const Header = () => {
   };
 
   const clearToken = () => {
-    window.location.reload();
     localStorage.clear(token);
+    window.location.reload();
   };
 
   const handleClick = () => {
@@ -165,7 +165,7 @@ const Header = () => {
                   />
                 </div>
                 <div className={styles.nickname}>{login}</div>
-                <div className={styles.profile}>
+                <div onClick={() => window.location.reload()} className={styles.profile}>
                   <Link to="/profile/edituser">Личный кабинет</Link>
                 </div>
                 <div className={styles.logoutbtn}>
