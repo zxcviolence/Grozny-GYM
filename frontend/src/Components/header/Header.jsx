@@ -31,12 +31,13 @@ const Header = () => {
   const id = localStorage.getItem("id");
   const login = useSelector((state) => state.users.login);
   const users = useSelector((state) => state.users.users);
-  console.log(users);
   const dispatch = useDispatch();
 
   useEffect(() => {
+  if(token) {
     dispatch(fetchUser());
-  }, [dispatch]);
+  }
+  }, [dispatch, token]);
 
   const UpBalanc = async (e) => {
     e.preventDefault();

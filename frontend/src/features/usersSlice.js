@@ -46,8 +46,6 @@ export const editUser = createAsyncThunk(
         method: "PATCH",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({
-          login,
-          password,
           name,
           surname,
           patronymic,
