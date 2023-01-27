@@ -25,15 +25,15 @@ export const fetchSimulators = createAsyncThunk(
 );
 export const addSimulator = createAsyncThunk(
   "simulators/add",
-  async ({name, image}, thunkAPI) => {
+  async ({ name, image }, thunkAPI) => {
     try {
       const res = await fetch("/simulators/add", {
-        headers: {'Content-Type': 'application/json',
-                Authorization: `Bearer ${thunkAPI.getState().users.token}`,
-      },
-      method: 'POST',
-      body: JSON.stringify({name, image})
-        
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${thunkAPI.getState().users.token}`,
+        },
+        method: "POST",
+        body: JSON.stringify({ name, image }),
       });
       const simulators = await res.json();
 
@@ -44,6 +44,21 @@ export const addSimulator = createAsyncThunk(
       return thunkAPI.fulfillWithValue(simulators);
     } catch (error) {
       thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const deleteSimulator = createAsyncThunk(
+  "simulator/update",
+  async ({ id }, thunkAPI) => {
+    try {
+      await fetch(`/simulator/${id}`, {
+        method: "DELETE",
+      });
+
+      return id;
+    } catch (error) {
+      return thunkAPI.rejectWithValue({ error: "Ошибка при удалении" });
     }
   }
 );
@@ -79,6 +94,27 @@ const simulatorsSlice = createSlice({
       .addCase(addSimulator.pending, (state, action) => {
         state.loading = true;
         state.error = null;
+      
+      .addCase(deleteSimulator.rejected, (state, action) => {
+        state.error = action.payload;
+        state.loading = false;
+      })
+      .addCase(deleteSimulator.pending, (state, action) => {
+        state.error = null;
+        state.simulators = state.simulators.map((item) => {
+          if (item._id === action.meta.arg._id) {
+            item.loading = true;
+          }
+          return item;
+        });
+        state.loading = true;
+      })
+      .addCase(deleteSimulator.fulfilled, (state, action) => {
+        state.error = null;
+        state.simulators = state.simulators.filter((item) => {
+          return item._id !== action.payload;
+        });
+        state.loading = false;
       });
   },
 });

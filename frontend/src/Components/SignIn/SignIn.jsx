@@ -138,9 +138,9 @@ const SignIn = () => {
               />
               <Button
                 type="submit"
-                fullWidth
+                // fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2 }}
+                sx={{ mt: 3, mb: 2, ml: 18 }}
               >
                 Войти
               </Button>
@@ -159,14 +159,17 @@ const SignIn = () => {
                 </div>
               ) : null}
               <Grid container>
-                <Grid item xs>
+                <Grid item xs={6}>
                   <Link href="#" variant="body2">
                     Забыли пароль?
                   </Link>
                 </Grid>
-                <Grid item>
+                <Grid container sx={{ mt: 4 }}>
+                  <Grid item sx={{ mr: 1 }}>
+                    Нет аккаунта?
+                  </Grid>
                   <Link to="/registration" element={<SignUp />} variant="body2">
-                    {"Нет аккаунта? Зарегистрироваться"}
+                    Зарегистрироваться
                   </Link>
                 </Grid>
               </Grid>
