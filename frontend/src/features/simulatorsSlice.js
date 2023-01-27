@@ -66,6 +66,19 @@ const simulatorsSlice = createSlice({
       .addCase(fetchSimulators.pending, (state, action) => {
         state.loading = true;
         state.error = null;
+      })
+      .addCase(addSimulator.fulfilled, (state, action) => {
+        state.simulators = action.payload;
+        state.loading = false;
+        state.error = null;
+      })
+      .addCase(addSimulator.rejected, (state, action) => {
+        state.error = action.payload;
+        state.loading = false;
+      })
+      .addCase(addSimulator.pending, (state, action) => {
+        state.loading = true;
+        state.error = null;
       });
   },
 });
