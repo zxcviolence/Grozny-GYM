@@ -1,6 +1,8 @@
 import React from "react";
 import { useEffect } from "react";
-import { FaUserAlt } from "react-icons/fa";
+import {TbMassage} from 'react-icons/tb'
+import {SiTrainerroad} from 'react-icons/si'
+import {GrUserSettings} from 'react-icons/gr'
 import { AiOutlinePoweroff, AiFillHome } from "react-icons/ai";
 import {IoIosFitness} from 'react-icons/io'
 import { BsFillGearFill } from "react-icons/bs";
@@ -52,12 +54,39 @@ const Admin = () => {
             </NavLink>
           </li>
           {users.role === 'Администратор' ? <li>
+            <NavLink to="/admin/control/">
+              <GrUserSettings
+                className={styles.fafaUser}
+                style={{ color: "black" }}
+              />
+              <span>Управление пользователями</span>
+            </NavLink>
+          </li> : null}
+          {users.role === 'Администратор' ? <li>
             <NavLink to="/admin/add/simulators">
               <IoIosFitness
                 className={styles.fafaUser}
                 style={{ color: "black" }}
               />
               <span>Добавить тренажёры</span>
+            </NavLink>
+          </li> : null}
+          {users.role === 'Администратор' ? <li>
+            <NavLink to="/admin/coachform">
+              <SiTrainerroad
+                className={styles.fafaUser}
+                style={{ color: "black" }}
+              />
+              <span>Запись к тренеру</span>
+            </NavLink>
+          </li> : null}
+          {users.role === 'Администратор' ? <li>
+            <NavLink to="/admin/form">
+              <TbMassage
+                className={styles.fafaUser}
+                style={{ color: "black" }}
+              />
+              <span>Запись на массаж</span>
             </NavLink>
           </li> : null}
           <li>
