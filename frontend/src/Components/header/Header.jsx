@@ -142,7 +142,7 @@ const Header = () => {
       >
         <Offcanvas.Header className={styles.offcanvas_header} closeButton>
           <Offcanvas.Title className={styles.offcanvas_title}>
-            Menu
+            Профиль
           </Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body className={styles.offcanvas_body}>
@@ -208,7 +208,7 @@ const Header = () => {
                             onChange={handleSetBalance}
                             startAdornment={
                               <InputAdornment position="start">
-                                $
+                                ₽
                               </InputAdornment>
                             }
                             label="Amount"

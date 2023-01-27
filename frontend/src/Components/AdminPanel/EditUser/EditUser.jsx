@@ -190,7 +190,7 @@ const EditUser = () => {
               <form
                 ref={upload}
                 id="uploadForm"
-                action={`http://localhost:4000/upload/${users._id}`}
+                action={`http://localhost:4000/upload/${users.image}`}
                 method="post"
                 target="_blank"
                 encType="multipart/form-data"
