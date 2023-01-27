@@ -14,7 +14,7 @@ module.exports.simulatorsController = {
     try {
       const simulator = await Simulator.create({
         image,
-        title,
+        name,
       });
       return res.json(simulator);
     } catch (error) {
@@ -35,7 +35,7 @@ module.exports.simulatorsController = {
         req.params.id,
         {
           image: req.body.image,
-          title: req.body.name,
+          name: req.body.name,
         },
         {
           new: true,

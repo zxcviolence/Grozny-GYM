@@ -4,7 +4,7 @@ const { simulatorsController } = require("../controllers/Simulators.controller")
 const router = Router();
 
 router.get("/", simulatorsController.getSimulator);
-router.post("/add/simulator", simulatorsController.addSimulator);
+router.post("/add", simulatorsController.addSimulator);
 router.delete('/simulator/:id', simulatorsController.deleteSimulator);
 router.patch('/simulator/:id', simulatorsController.updateSimulator);
 
