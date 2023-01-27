@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { FaUserAlt } from "react-icons/fa";
-import { AiOutlinePoweroff } from "react-icons/ai";
+import { AiOutlinePoweroff, AiFillHome } from "react-icons/ai";
 import {IoIosFitness} from 'react-icons/io'
 import { BsFillGearFill } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
@@ -35,11 +35,11 @@ const Admin = () => {
         <ul className={styles.navigation}>
           <li>
             <a href="/">
-              <FaUserAlt
+              <AiFillHome
                 className={styles.fafaUser}
                 style={{ color: "black" }}
               />
-              <span>Просмотр профиля</span>
+              <span>На главную</span>
             </a>
           </li>
           <li>

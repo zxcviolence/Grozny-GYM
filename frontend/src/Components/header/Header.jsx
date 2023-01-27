@@ -167,7 +167,7 @@ const Header = () => {
                   className={styles.profile}
                   onClick={() => window.location.reload()}
                 >
-                  <Link to="/admin/edituser">Личный кабинет</Link>
+                  <Link to="/profile/edituser">Личный кабинет</Link>
                 </div>
                 <div className={styles.logoutbtn}>
                   <button onClick={clearToken}>Выйти</button>

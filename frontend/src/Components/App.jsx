@@ -4,7 +4,6 @@ import { Routes, Route } from "react-router-dom";
 import SportsBar from "./Sportsbar/SportsBar";
 import Coach from "./Coach/Coach";
 import Simulators from "./Simulators/Simulators";
-import OneSimulator from "./Simulators/OneSimulator";
 import SignIn from "./SignIn/SignIn";
 import SignUp from "./SignUp/SignUp";
 import Main from "./Main/Main";
@@ -17,21 +16,21 @@ import Footer from "./Footer/Footer";
 import Admin from "./AdminPanel/Admin";
 import EditUser from "./AdminPanel/EditUser/EditUser";
 import Job from "./Job/Job";
+import AddSims from "./AdminPanel/Simulators/AddSims";
 
 function App() {
   return (
     <div className="App">
-      {window.location.pathname === "/admin/" ||
-        window.location.pathname === "/admin/edituser/" ||
-        window.location.pathname === "/admin" ||
-        window.location.pathname === "/admin/edituser" ? null : (
+      {window.location.pathname === "/profile/" ||
+        window.location.pathname === "/profile/edituser/" ||
+        window.location.pathname === "/profile" ||
+        window.location.pathname === "/profile/edituser" ||  window.location.pathname === "/admin/add/simulators" || window.location.pathname === "/admin/add/simulators/" ? null : (
         <Header />
       )}
 
       <Routes>
-        <Route path="/admin" element={<Admin />} />
+        <Route path="/profile" element={<Admin />} />
         <Route path="/simulators" element={<Simulators />} />
-        <Route path="/simulators/:id" element={<OneSimulator />} />
         <Route path="/" element={<Main />} />
         <Route path="/login" element={<SignIn />} />
         <Route path="/registration" element={<SignUp />} />
@@ -40,16 +39,17 @@ function App() {
         <Route path="/job" element={<Job />} />
         <Route path="/sports_bar" element={<SportsBar />} />
         <Route path="/sports_bar/:id" element={<OneElementBar />} />
-        <Route path="/admin/edituser" element={<EditUser />} />
+        <Route path="/profile/edituser" element={<EditUser />} />
         <Route path="/massage" element={<Massage />} />
         <Route path="/vacation" element={<FormV />} />
+        <Route path="/admin/add/simulators" element={<AddSims />} />
         <Route path="/admin/form" element={<Form />} />
         <Route path="/admin/coachform" element={<CoachForm />} />
       </Routes>
       {window.location.pathname === "/admin/" ||
         window.location.pathname === "/admin/edituser/" ||
         window.location.pathname === "/admin" ||
-        window.location.pathname === "/admin/edituser" ? null : (
+        window.location.pathname === "/admin/edituser" || window.location.pathname === "/admin/add/simulators" || window.location.pathname === "/admin/add/simulators/"? null : (
         <Footer />
       )}
 

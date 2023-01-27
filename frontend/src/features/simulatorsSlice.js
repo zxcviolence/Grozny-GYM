@@ -23,6 +23,30 @@ export const fetchSimulators = createAsyncThunk(
     }
   }
 );
+export const addSimulator = createAsyncThunk(
+  "simulators/add",
+  async ({name, image}, thunkAPI) => {
+    try {
+      const res = await fetch("/simulators/add", {
+        headers: {'Content-Type': 'application/json',
+                Authorization: `Bearer ${thunkAPI.getState().users.token}`,
+      },
+      method: 'POST',
+      body: JSON.stringify({name, image})
+        
+      });
+      const simulators = await res.json();
+
+      if (simulators.error) {
+        return thunkAPI.rejectWithValue(simulators.error);
+      }
+
+      return thunkAPI.fulfillWithValue(simulators);
+    } catch (error) {
+      thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
 
 const simulatorsSlice = createSlice({
   name: "simulators",
