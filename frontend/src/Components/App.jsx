@@ -46,10 +46,10 @@ function App() {
         <Route path="/admin/form" element={<Form />} />
         <Route path="/admin/coachform" element={<CoachForm />} />
       </Routes>
-      {window.location.pathname === "/admin/" ||
-        window.location.pathname === "/admin/edituser/" ||
-        window.location.pathname === "/admin" ||
-        window.location.pathname === "/admin/edituser" || window.location.pathname === "/admin/add/simulators" || window.location.pathname === "/admin/add/simulators/"? null : (
+      {window.location.pathname === "/profile/" ||
+        window.location.pathname === "/profile/edituser/" ||
+        window.location.pathname === "/profile" ||
+        window.location.pathname === "/profile/edituser" || window.location.pathname === "/admin/add/simulators" || window.location.pathname === "/admin/add/simulators/"? null : (
         <Footer />
       )}
 

@@ -9,6 +9,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Zoom from "react-reveal/Slide";
+import { separator } from "../../helpers/separator";
 
 const OneElementBar = () => {
   const { id } = useParams();
@@ -73,9 +74,9 @@ const OneElementBar = () => {
                   <div className={styles.Title_goods}>
                     <h4>{goods.brand}</h4>
                     <h4>{goods.name}</h4>
-                    <span>
+                    <span> 
                       Цена:
-                      <span className={styles.price_Goods}>{goods.price}</span>
+                      <span className={styles.price_Goods}> {separator(goods.price)} </span>
                       руб
                     </span>
                   </div>
