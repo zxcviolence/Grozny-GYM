@@ -43,7 +43,14 @@ const Coach = () => {
   if (loading) {
     return <div className={styles.loaderdiv}><div className={styles.loader}>Loading</div></div>;
   }
-
+  const handleTop = (coach) => {
+    setSelect(coach)
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  };
   return (
     <main>
       {coaches.map((coach) => {
@@ -146,7 +153,7 @@ const Coach = () => {
               </div>
               <div className={styles.name}>{coach.name}</div>
               <div className={styles.description}>{coach.description}</div>
-              <button onClick={() => setSelect(coach)}>
+              <button onClick={() => handleTop(coach)}>
                 Подробнее
               </button>
             </div>
