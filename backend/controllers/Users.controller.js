@@ -18,7 +18,7 @@ module.exports.usersController = {
 
     try {
 
-      const user2 = await User.findById( id );
+      const user2 = await User.findById(id);
 
       const user = await User.findByIdAndUpdate(id, {
         role: req.body.role.length <= 0 ? user2.role : req.body.role,
@@ -115,6 +115,15 @@ module.exports.usersController = {
       return res.json("Пользователь успешно зарегестрирован");
     } catch (error) {
       res.status(400).json("Registration Error" + error);
+    }
+  },
+  getUsersForAdmin: async (req, res) => {
+    try {
+      const user = await User.find()
+
+      return res.json(user);
+    } catch (error) {
+      res.status(400).json(error.message);
     }
   },
 

@@ -30,6 +30,7 @@ router.post(
 );
 router.patch('/addtoCart/:userId/:assemblyId', authMiddleware, usersController.addToCartAssembly)
 router.get('/cart/:userId',  usersController.getAssemblyCart)
+router.get('/get/users',  usersController.getUsers)
 router.patch('/delete/cart/:userId/:assemblyId', authMiddleware, usersController.deleteAssemblyfromCart)
 router.patch("/addtoSubs/:id/:subId", authMiddleware, usersController.addToSubscription) //ПРиобретение подписки
 router.patch("/upbalance/:id", usersController.upBalance) // пополнение счета
