@@ -31,7 +31,7 @@ const Header = () => {
   const id = localStorage.getItem("id");
   const login = useSelector((state) => state.users.login);
   const users = useSelector((state) => state.users.users);
-  console.table(users);
+  console.log(users);
   const dispatch = useDispatch();
 
   useEffect(() => {

@@ -190,7 +190,7 @@ const usersSlice = createSlice({
         state.error = action.payload;
       })
       .addCase(BalansUp.fulfilled, (state, action) => {
-        state.user.cash = action.payload;
+        state.users.cash = action.payload;
         state.loading = false;
         state.error = null;
       })
