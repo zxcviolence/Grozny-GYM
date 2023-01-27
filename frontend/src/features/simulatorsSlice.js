@@ -49,10 +49,10 @@ export const addSimulator = createAsyncThunk(
 );
 
 export const deleteSimulator = createAsyncThunk(
-  "simulator/update",
+  "simulator/delete",
   async ({ id }, thunkAPI) => {
     try {
-      await fetch(`/simulator/${id}`, {
+      await fetch(`/simulators/simulator/${id}`, {
         method: "DELETE",
       });
 
