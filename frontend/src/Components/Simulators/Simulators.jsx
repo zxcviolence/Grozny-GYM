@@ -32,12 +32,11 @@ const Simulators = () => {
               <div className={styles.list}>
                 <div className={styles.section}>
                   <div className={styles.img}>
-                    <img
+                    <img style={{width: '100%'}}
                       src={`assets/images/simulators/${simulator.image}`}
                       alt=""
                     />
-                    <div className={styles.title}>{simulator.title}</div>
-                    <Link to = {`${simulator._id}`} className={styles.link}><h4 className={styles.info}>Узнать больше</h4></Link>
+                    <div className={styles.title}>{simulator.name}</div>
                   </div>
                 </div>
               </div>

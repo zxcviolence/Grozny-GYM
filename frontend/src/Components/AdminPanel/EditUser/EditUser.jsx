@@ -186,11 +186,11 @@ const EditUser = () => {
                 </div>
               </div>
               <div className={styles.divider}></div>
-
+              <label>Аватарка:</label>
               <form
                 ref={upload}
                 id="uploadForm"
-                action={`http://localhost:4000/upload/${users.image}`}
+                action={`http://localhost:4000/simulators/add/${users.image}`}
                 method="post"
                 target="_blank"
                 encType="multipart/form-data"

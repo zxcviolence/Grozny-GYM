@@ -28,7 +28,13 @@ const OneElementBar = () => {
     autoplaySpeed: 2000,
     // slickPrev:true
   };
-
+  const handleTop = () => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  };
   const filt = oneElement.filter((i) => i._id === id);
 
   return (
@@ -49,7 +55,6 @@ const OneElementBar = () => {
               alt=""
             />
           </div>
-
         </div>
       </Zoom>
 
@@ -76,10 +81,9 @@ const OneElementBar = () => {
                   </div>
                 </div>
                 <div className={styles.goods_subtitle}>
-                <span >{goods.subtitle}</span>
-              </div>
+                  <span>{goods.subtitle}</span>
                 </div>
-
+              </div>
             </div>
           </Zoom>
         );
@@ -116,16 +120,17 @@ const OneElementBar = () => {
             return (
               <div key={el._id} className={styles.carousel_item}>
                 <div className={styles.carousel_image}>
-
-                  <img src={`/assets/images/sportsNutrition/${el.image}`} alt="" />
-
+                  <img
+                    src={`/assets/images/sportsNutrition/${el.image}`}
+                    alt=""
+                  />
                 </div>
                 <div className={styles.el_name}>{el.name}</div>
-                <Link to={`/sports_bar/${el._id}`}>подробнее</Link>
+                <Link onClick={handleTop} to={`/sports_bar/${el._id}`}>
+                  подробнее
+                </Link>
               </div>
-
             );
-
           })}
         </Slider>
         {/* </Carousel> */}
