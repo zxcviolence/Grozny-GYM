@@ -51,8 +51,6 @@ const EditUser = () => {
         name,
         surname,
         patronymic,
-        login,
-        password,
         banned,
         role,
         image: image.split("").splice(12).join(""),
@@ -84,35 +82,6 @@ const EditUser = () => {
 
           <div className={styles.panelBody}>
             <form onSubmit={handleEdit} action="submit">
-              <div className={styles.formGroup}>
-                <label>Новый логин:</label>
-                <div>
-                  <input
-                    className={styles.formControl}
-                    type="text"
-                    onChange={handleSetLogin}
-                    value={login}
-                    placeholder={users.login}
-                    maxLength="40"
-                    name="editlogin"
-                  />
-                </div>
-              </div>
-              <div className={styles.formGroup}>
-                <label>Новый пароль:</label>
-                <div>
-                  <input
-                    className={styles.formControl}
-                    type="password"
-                    onChange={handleSetPassword}
-                    placeholder="*****************"
-                    value={password}
-                    maxLength="40"
-                    name="editpassword"
-                  />
-                </div>
-              </div>
-              <div className={styles.divider}></div>
               {users.role === "Администратор" ? (
                 <div className={styles.formGroup}>
                   <label>Группа:</label>
@@ -190,7 +159,7 @@ const EditUser = () => {
               <form
                 ref={upload}
                 id="uploadForm"
-                action={`http://localhost:4000/simulators/add/${users.image}`}
+                action={`http://localhost:4000/upload/${users.image}`}
                 method="post"
                 target="_blank"
                 encType="multipart/form-data"

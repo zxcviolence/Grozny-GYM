@@ -17,16 +17,10 @@ module.exports.usersController = {
     const { id } = req.params;
 
     try {
-      const hashPassword = bcrypt.hashSync(
-        req.body.password,
-        Number(process.env.BCRYPT_ROUNDS)
-      );
 
       const user2 = await User.findById( id );
 
       const user = await User.findByIdAndUpdate(id, {
-        login: req.body.login.length <= 0 ? user2.login : req.body.login,
-        password: hashPassword.length <= 0 ? user2.password : hashPassword,
         role: req.body.role.length <= 0 ? user2.role : req.body.role,
         banned: req.body.banned.length <= 0 ? user2.banned : req.body.banned,
         image: req.body.image.length <= 0 ? user2.image : req.body.image,
