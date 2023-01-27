@@ -8,7 +8,7 @@ const ContentOne = () => {
     <>
       <div className={styles.content_container1}>
         <Zoom left cascade>
-          <h2>Тренажерный зал "Grozny-gym" это:</h2>
+          <h2 style={{color: "#fff"}}>Тренажерный зал "Grozny-gym" это:</h2>
         </Zoom>
         <Fade left cascade>
           <div className={styles.items_ctr1}>
