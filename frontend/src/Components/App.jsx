@@ -17,19 +17,23 @@ import Admin from "./AdminPanel/Admin";
 import EditUser from "./AdminPanel/EditUser/EditUser";
 import Job from "./Job/Job";
 import AddSims from "./AdminPanel/Simulators/AddSims";
+import ControlUser from "./AdminPanel/ControlUser/ControlUser";
 import AddBar from "./AdminPanel/Sportbar/AddBar";
 
 function App() {
   return (
     <div className="App">
       {window.location.pathname === "/profile/" ||
-      window.location.pathname === "/profile/edituser/" ||
-      window.location.pathname === "/profile" ||
-      window.location.pathname === "/profile/edituser" ||
-      window.location.pathname === "/admin/add/simulators" ||
-      window.location.pathname === "/admin/add/simulators/" || 
-      window.location.pathname === "/admin/sportbar" ||
-      window.location.pathname === "/admin/sportbar/" ? null : (
+        window.location.pathname === "/admin/control/" ||
+        window.location.pathname === "/admin/add/simulators" ||
+        window.location.pathname === "/admin/add/simulators/" ? null : (
+        window.location.pathname === "/profile/edituser/" ||
+        window.location.pathname === "/profile" ||
+        window.location.pathname === "/profile/edituser" ||
+        window.location.pathname === "/admin/add/simulators" ||
+        window.location.pathname === "/admin/add/simulators/" || 
+        window.location.pathname === "/admin/sportbar" ||
+        window.location.pathname === "/admin/sportbar/" ? null : (
         <Header />
       )}
 
@@ -52,15 +56,17 @@ function App() {
         <Route path="/admin/sportbar" element={<AddBar />} />
         <Route path="/admin/form" element={<Form />} />
         <Route path="/admin/coachform" element={<CoachForm />} />
+        <Route path="/admin/control" element={<ControlUser />} />
       </Routes>
       {window.location.pathname === "/profile/" ||
-      window.location.pathname === "/profile/edituser/" ||
-      window.location.pathname === "/profile" ||
-      window.location.pathname === "/profile/edituser" ||
-      window.location.pathname === "/admin/add/simulators" ||
-      window.location.pathname === "/admin/add/simulators/" || 
-      window.location.pathname === "/admin/sportbar" ||
-      window.location.pathname === "/admin/sportbar/" ? null : (
+       window.location.pathname === "/profile/edituser/" ||
+       window.location.pathname === "/profile" ||
+       window.location.pathname === "/profile/edituser" ||
+       window.location.pathname === "/admin/add/simulators" ||
+       window.location.pathname === "/admin/add/simulators/" || 
+       window.location.pathname === "/admin/control/" ||
+       window.location.pathname === "/admin/sportbar" ||
+       window.location.pathname === "/admin/sportbar/" ? null : (
         <Footer />
       )}
     </div>
