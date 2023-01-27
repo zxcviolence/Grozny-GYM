@@ -4,6 +4,7 @@ const initialState = {
   error: [],
   successfully: null,
   users: [],
+  getted: [],
   token: localStorage.getItem("token"),
   id: localStorage.getItem("id"),
   login: localStorage.getItem("login"),
@@ -103,6 +104,18 @@ export const fetchUser = createAsyncThunk("fetch/user", async (_, thunkAPI) => {
     return thunkAPI.rejectWithValue(error.message);
   }
 });
+export const getUsers = createAsyncThunk("get/users", async (_, thunkAPI) => {
+  try {
+    const res = await fetch(`/users/get/users`)
+    const users = await res.json()
+    if (users.error) {
+      return thunkAPI.rejectWithValue(users.error);
+    }
+    return thunkAPI.fulfillWithValue(users);
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
 
 // Поднять бабло в AZINO ООО
 export const BalansUp = createAsyncThunk(
@@ -148,6 +161,19 @@ const usersSlice = createSlice({
         state.loading = false;
         state.error = null;
         state.users = action.payload;
+      })
+      .addCase(getUsers.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(getUsers.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(getUsers.fulfilled, (state, action) => {
+        state.loading = false;
+        state.error = null;
+        state.getted = action.payload;
       })
 
       // REGISTER
