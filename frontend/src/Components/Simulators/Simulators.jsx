@@ -37,7 +37,7 @@ const Simulators = () => {
   return (
     <div className={styles.main_unit}>
       <RubberBand>
-        <h1 className={styles.h1}>Тинейджеры</h1>
+        <h1 className={styles.h1}>Тренажёры</h1>
       </RubberBand>
       <div className={styles.main_content}>
         {simulators.map((item) => {
