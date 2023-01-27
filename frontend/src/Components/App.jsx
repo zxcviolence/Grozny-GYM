@@ -23,13 +23,16 @@ import AddBar from "./AdminPanel/Sportbar/AddBar";
 function App() {
   return (
     <div className="App">
-      {window.location.pathname === "/profile/" ||
+      {
         window.location.pathname === "/profile/edituser/" ||
+        window.location.pathname === "/admin/control/" || 
+        window.location.pathname === "/admin/control" ||
         window.location.pathname === "/profile" ||
         window.location.pathname === "/profile/edituser" ||
-        window.location.pathname === "/admin/control/" ||
         window.location.pathname === "/admin/add/simulators" ||
-        window.location.pathname === "/admin/add/simulators/" ? null : (
+        window.location.pathname === "/admin/add/simulators/" || 
+        window.location.pathname === "/admin/sportbar" ||
+        window.location.pathname === "/admin/sportbar/" ? null : (
         <Header />
       )}
 
@@ -55,12 +58,15 @@ function App() {
         <Route path="/admin/control" element={<ControlUser />} />
       </Routes>
       {window.location.pathname === "/profile/" ||
-        window.location.pathname === "/profile/edituser/" ||
-        window.location.pathname === "/profile" ||
-        window.location.pathname === "/profile/edituser" ||
-        window.location.pathname === "/admin/control/" ||
-        window.location.pathname === "/admin/add/simulators" ||
-        window.location.pathname === "/admin/add/simulators/" ? null : (
+       window.location.pathname === "/profile/edituser/" ||
+       window.location.pathname === "/profile" ||
+       window.location.pathname === "/profile/edituser" ||
+       window.location.pathname === "/admin/add/simulators" ||
+       window.location.pathname === "/admin/add/simulators/" || 
+       window.location.pathname === "/admin/control/" ||
+       window.location.pathname === "/admin/control" ||
+       window.location.pathname === "/admin/sportbar" ||
+       window.location.pathname === "/admin/sportbar/" ? null : (
         <Footer />
       )}
     </div>
