@@ -12,7 +12,6 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import PaymentForm from "./Cards";
 import { FiLogOut } from "react-icons/fi";
-import { IoWallet } from "react-icons/io5";
 import {
   FormControl,
   InputAdornment,
@@ -170,13 +169,11 @@ const Header = () => {
                   <Link to="/profile/edituser">Личный кабинет</Link>
                 </div>
                 <div className={styles.logoutbtn}>
-                  <button onClick={clearToken}>
-                    <FiLogOut /> Выйти
-                  </button>
+                  <button onClick={clearToken}><FiLogOut/>Выйти</button>
                 </div>
               </div>
               <div className={styles.user_ca2sh}>
-                <div><IoWallet/> Кошелек: {users.cash} ₽</div>
+                <div>Кошелек: {users.cash} ₽</div>
                 <Button onClick={handleOpen}>Пополнить счет</Button>
                 <Modal
                   open={open}
