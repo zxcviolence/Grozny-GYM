@@ -94,7 +94,7 @@ const simulatorsSlice = createSlice({
       .addCase(addSimulator.pending, (state, action) => {
         state.loading = true;
         state.error = null;
-      
+      })
       .addCase(deleteSimulator.rejected, (state, action) => {
         state.error = action.payload;
         state.loading = false;
