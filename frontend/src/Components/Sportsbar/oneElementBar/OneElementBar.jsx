@@ -126,7 +126,7 @@ const OneElementBar = () => {
                   />
                 </div>
                 <div className={styles.el_name}>{el.name}</div>
-                <Link onClick={handleTop} to={`/sports_bar/${el._id}`}>
+                <Link style={{color: 'blue'}} onClick={handleTop} to={`/sports_bar/${el._id}`}>
                   подробнее
                 </Link>
               </div>
