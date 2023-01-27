@@ -49,7 +49,7 @@ function App() {
       {window.location.pathname === "/profile/" ||
         window.location.pathname === "/profile/edituser/" ||
         window.location.pathname === "/profile" ||
-        window.location.pathname === "/profile/edituser" || window.location.pathname === "/profile/add/simulators" || window.location.pathname === "/admin/add/simulators/"? null : (
+        window.location.pathname === "/profile/edituser" || window.location.pathname === "/admin/add/simulators" || window.location.pathname === "/admin/add/simulators/"? null : (
         <Footer />
       )}
 
