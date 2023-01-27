@@ -16,6 +16,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import styles from "./SignUp.module.scss";
+import { width } from "@mui/system";
 
 const SignUp = () => {
   const error = useSelector((state) => state.users.error);
@@ -23,20 +24,11 @@ const SignUp = () => {
   const loading = useSelector((state) => state.users.loading);
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
-  // const [age, setAge] = useState("");
-  // const [name, setName] = useState("");
   const dispatch = useDispatch();
-  // const [gmailError, setGmailError] = useState()
 
   const handleSetLogin = (e) => {
     setLogin(e.target.value);
   };
-  // const handleSetAge = (e) => {
-  //   setAge(e.target.value);
-  // };
-  // const handleSetName = (e) => {
-  //   setName(e.target.value);
-  // };
   const handleSetPassword = (e) => {
     setPassword(e.target.value);
   };
@@ -140,8 +132,6 @@ const SignUp = () => {
                 onChange={handleSetPassword}
                 value={password}
               />
-
-              {/* {gmailError && <div className={styles.gmError}> {gmailError} </div>} */}
               <Button
                 type="submit"
                 fullWidth
@@ -151,17 +141,24 @@ const SignUp = () => {
                 Зарегистрироваться
               </Button>
               {error ? <div className={styles.error}>{error}</div> : null}
+              {loading ? (
+                <div className={styles.loader}>
+                  <div className={styles.scanner}>
+                    <span>Loading...</span>
+                  </div>
+                </div>
+              ) : null}
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
                 label="Я ознакомлен с правилами и согласен на обработку персональных данных"
               />
-              <Grid container>
-                <Grid item xs></Grid>
-                <Grid item>
-                  <Link to="/login" element={<SignIn />} variant="body2">
-                    {"Уже есть аккаунт? Войти"}
-                  </Link>
+              <Grid container sx={{ mt: 4 }}>
+                <Grid item sx={{ mr: 1 }}>
+                  Уже есть аккаунт?
                 </Grid>
+                <Link to="/login" element={<SignUp />} variant="body2">
+                  Войти
+                </Link>
               </Grid>
               <Copyright sx={{ mt: 5 }} />
             </Box>
