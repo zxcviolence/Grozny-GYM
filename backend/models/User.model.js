@@ -1,15 +1,45 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const userSchema = mongoose.Schema({
-    login: {
-        type: String,
-        require: true,
+  login: {
+    type: String,
+  },
+  password: {
+    type: String,
+  },
+  subscription: [
+    {
+      ref: "Subscription",
+      type: mongoose.SchemaTypes.ObjectId,
+      default: null,
     },
-    password: {
-        type: String,
-        require: true,
-    }
-})
-const User = mongoose.model("User", userSchema)
+  ],
+  role: {
+    type: String,
+    default: "Пользователь",
+  },
+  image: {
+    type: String,
+    default: 'default.png',
+  },
+  name: {
+    type: String,
+  },
+  surname: {
+    type: String,
+  },
+  patronymic: {
+    type: String,
+  },
+  banned: {
+    type: Boolean,
+    default: false,
+  },
+  cash: {
+    type: Number,
+    default: 0,
+  },
+});
+const User = mongoose.model("User", userSchema);
 
-module.exports = User
+module.exports = User;

@@ -1,0 +1,256 @@
+.main_container {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background: url("https://img1.akspic.ru/crops/9/8/9/5/3/135989/135989-fizicheskaya_podgotovka-shtanga-fitness_centr-gantel-bodibilding-1920x1080.jpg") no-repeat;
+    background-attachment: fixed; 
+	background-size: cover;
+
+   
+
+    .carousel_Block{
+        width: 100%;
+        margin-top: 5%;
+     
+        .slider{
+            width: 80%;
+            height: 30vh;
+            margin: auto;
+            text-align: center;
+            color: aliceblue;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            gap: 40px;
+            color: rgb(255, 255, 255);
+            border: 4px solid rgba(51, 50, 50, 0.2);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 2rem 1rem rgba(33, 32, 32, 0.2);	
+            border-radius: 30px;
+            background: inherit;
+
+            button {
+                margin: 0% -1% 0 -1% ;
+                border: none;
+                position: absolute;
+                z-index: 19;
+            }
+
+            .carousel_item{
+                display: flex;
+                justify-content: space-around;
+                gap: 20px;
+
+                .el_name{
+                    height: 6vh;
+                }
+                a{
+                    text-decoration: none;
+                }
+
+                .carousel_image {
+                    // height: 20%;
+                    display: flex;
+                    justify-content: center;
+    
+                    img{
+                        height: 16vh;
+                    }
+                }
+
+            }
+
+            
+        }
+        // .carousel{
+        //     height: 60%;
+        //     display: flex;
+        //     align-items: center;
+        //     justify-content: center;
+        //     color: rgb(255, 255, 255);
+        //     border: 1px solid rgba(51, 50, 50, 0.2);
+        //     backdrop-filter: blur(10px) sepia(90%);;
+        //     box-shadow: 0 0 2rem 1rem rgba(33, 32, 32, 0.2);	
+        //     border-radius: 5px;
+        //     background: inherit;
+        //     overflow: hidden;
+        //     margin: 0;
+        //     padding: 0;
+        //     .carousel_item{
+        //         margin: 0;
+        //         padding: 0;
+              
+    
+        //         .carousel_image{
+                    
+        //             width: 100%;
+    
+        //             img{
+        //                 height: 10vw;
+        //                 width: 80%;
+        //             }
+        //         }
+        //     }
+        // }
+    }
+
+    
+    .publicity{
+        display: flex;
+        flex-direction: column;
+        width: 20%;
+        margin-top: 2%;
+        gap: 20px;
+
+        .publicity_block_1{
+            width: 100%;
+
+            img{
+                height: 30vw;
+                width: 100%;
+                font-size: 20px;
+            }
+        }
+
+        .publicity_block_2{
+
+        }
+    }
+
+    .Goods_card{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        width: 55%;
+        margin-top: 5%;
+       
+        .Goods_Info{
+            justify-content: space-around;
+            color: rgb(255, 255, 255);
+            border: 1px solid rgba(51, 50, 50, 0.2);
+            backdrop-filter: blur(10px) sepia(90%);;
+            box-shadow: 0 0 2rem 1rem rgba(33, 32, 32, 0.2);	
+            border-radius: 5px;
+            background: inherit;
+            overflow: hidden;
+            padding: 3%;
+
+            .goods_subtitle{
+                margin-top: 5%;
+                font-size: 18px;
+            }
+
+            .Goods_block{
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .imagage{
+                width: 25vw;
+                height: 350px;
+                img {
+                    height: 350px;
+                }
+            }
+
+            .Title_goods{
+                // margin-left: 10%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                color: rgb(245, 237, 237);
+
+                span{
+                    font-size: 30px;
+                }
+
+                .price_Goods{
+                    color: #960018;
+                }
+            }
+        }
+       
+    }
+
+    .action {
+        display: flex;
+        flex-direction: column;
+        width: 20%;
+        margin-top: 2%;
+
+        .action_block {
+            display: flex;
+            flex-direction: column;
+            color: orange;
+            text-align: center;
+            backdrop-filter: blur(35px)  ;
+            box-shadow: 0 0 2rem 1rem rgba(33, 32, 32, 0.2);	
+            border-radius: 5px;
+            background: inherit;
+            gap: 20px;
+            overflow: hidden;
+            span {
+                font-size: 25px;
+                color: rgb(183, 255, 0);
+            }
+
+            span:last-child {
+                margin-bottom: 9%;
+            }
+
+            .action_interest{
+                width: 100%;
+                font-size: 35px;
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                background-color: #960018;
+            }
+        }
+    }
+}
+
+.loader,
+.loader:after {
+  overflow:hidden;
+  border-radius: 50%;
+  width: 30em;
+  height: 30em;
+}
+.loader {
+  margin: 60px auto;
+  font-size: 10px;
+  position: relative;
+  text-indent: -9999em;
+  border-top: 1.1em solid rgba(101,171,248, 0.2);
+  border-right: 1.1em solid rgba(101,171,248, 0.2);
+  border-bottom: 1.1em solid rgba(101,171,248, 0.2);
+  border-left: 1.1em solid #65abf8;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation: load8 1.1s infinite linear;
+  animation: load8 1.1s infinite linear;
+}
+@-webkit-keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
